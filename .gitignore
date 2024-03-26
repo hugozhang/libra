@@ -1,5 +1,7 @@
 /bin/
 /target/
+.github
+.idea
 .project
 .classpath
 .settings/
