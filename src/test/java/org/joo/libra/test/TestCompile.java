@@ -1,5 +1,7 @@
 package org.joo.libra.test;
 
+import org.joo.libra.PredicateContext;
+import org.joo.libra.sql.SqlPredicate;
 import org.joo.libra.support.ObjectUtils;
 import org.joo.libra.support.eval.VariableEvaluator;
 import org.joo.libra.support.eval.impl.CompiledJavaEvaluator;
@@ -9,7 +11,23 @@ import org.joo.libra.test.support.Person;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Date;
+
 public class TestCompile {
+
+    @Test
+    public void testDate() throws Exception {
+        Date date = new Date();
+        Person p = MockDataUtils.mockPerson();
+        p.setBirthDay(date);
+        p.setBirthDay1(date);
+//        VariableEvaluator evaluator = new CompiledJavaEvaluator();
+//        Assert.assertEquals(date, evaluator.evaluate(p, "birthDay"));
+
+        PredicateContext context = new PredicateContext(p);
+        SqlPredicate predicate = new SqlPredicate("birthDay > birthDay1 ");
+        predicate.satisfiedBy(context);
+    }
 
     @Test
     public void testCompile() throws Exception {

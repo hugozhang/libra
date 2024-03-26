@@ -20,5 +20,5 @@ public interface Predicate {
      * @throws PredicateExecutionException if any exception occurred while
      *                                     evaluating the predicate
      */
-    public boolean satisfiedBy(final PredicateContext context) throws PredicateExecutionException;
+    boolean satisfiedBy(final PredicateContext context) throws PredicateExecutionException;
 }

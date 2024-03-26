@@ -7,7 +7,7 @@ public class ObjectExpressionNode extends ValueExpressionNode<Object> {
 
 	@Override
 	public Predicate buildPredicate() {
-		return new SimpleLiteralPredicate<Object>(value, value != null);
+		return new SimpleLiteralPredicate<>(value, value != null);
 	}
 
 	public String toString() {

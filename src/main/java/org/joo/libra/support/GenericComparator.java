@@ -1,6 +1,7 @@
 package org.joo.libra.support;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * Utility class for comparing numbers. Both numbers will be converted into
@@ -50,12 +51,27 @@ public class GenericComparator {
             return 0;
         return d1 > d2 ? 1 : -1;
     }
+    public static int compareDate(Date d1, Date d2) {
+        if (d1 == null && d2 == null) {
+            return 0;
+        }
+        if (d1 == null) {
+            return -1;
+        }
+        if (d2 == null) {
+            return 1;
+        }
+        return d1.compareTo(d2);
+    }
 
     public static boolean compare(final Object one, final Object other) {
         if (one == null)
             return other == null;
         if (one instanceof Number && other instanceof Number) {
             return compareNumber((Number) one, (Number) other) == 0;
+        }
+        if (one instanceof Date && other instanceof Date) {
+            return compareDate((Date) one, (Date) other) == 0;
         }
         return one.equals(other);
     }

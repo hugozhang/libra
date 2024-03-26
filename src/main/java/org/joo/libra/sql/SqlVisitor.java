@@ -8,30 +8,7 @@ import org.joo.libra.common.HasValue;
 import org.joo.libra.sql.antlr.SqlLexer;
 import org.joo.libra.sql.antlr.SqlParser;
 import org.joo.libra.sql.antlr.SqlParserBaseVisitor;
-import org.joo.libra.sql.node.AndExpressionNode;
-import org.joo.libra.sql.node.BooleanExpressionNode;
-import org.joo.libra.sql.node.ConditionalExpressionNode;
-import org.joo.libra.sql.node.ContainsCompareExpressionNode;
-import org.joo.libra.sql.node.EmptyExpressionNode;
-import org.joo.libra.sql.node.ExpressionNode;
-import org.joo.libra.sql.node.FilterMatchingExpressionNode;
-import org.joo.libra.sql.node.FunctionExpressionNode;
-import org.joo.libra.sql.node.GenericCompareExpressionNode;
-import org.joo.libra.sql.node.InCompareExpressionNode;
-import org.joo.libra.sql.node.LexicalCompareExpressionNode;
-import org.joo.libra.sql.node.ListExpressionNode;
-import org.joo.libra.sql.node.ListItemExpressionNode;
-import org.joo.libra.sql.node.MatchingExpressionNode;
-import org.joo.libra.sql.node.MathExpressionNode;
-import org.joo.libra.sql.node.NotExpressionNode;
-import org.joo.libra.sql.node.NumberExpressionNode;
-import org.joo.libra.sql.node.NumericCompareExpressionNode;
-import org.joo.libra.sql.node.ObjectExpressionNode;
-import org.joo.libra.sql.node.OrExpressionNode;
-import org.joo.libra.sql.node.StringConcatExpressionNode;
-import org.joo.libra.sql.node.StringExpressionNode;
-import org.joo.libra.sql.node.TempVariableExpressionNode;
-import org.joo.libra.sql.node.VariableExpressionNode;
+import org.joo.libra.sql.node.*;
 import org.joo.libra.support.exceptions.MalformedSyntaxException;
 
 public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
@@ -250,6 +227,13 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
     }
 
     @Override
+    public ExpressionNode visitDateExpr(SqlParser.DateExprContext ctx) {
+        DateExpressionNode node = new DateExpressionNode();
+
+        return node;
+    }
+
+    @Override
     public ExpressionNode visitBooleanExpr(final SqlParser.BooleanExprContext ctx) {
         BooleanExpressionNode node = new BooleanExpressionNode();
         boolean value = Boolean.valueOf(ctx.getText().toLowerCase());
@@ -290,4 +274,10 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
                 || node instanceof FunctionExpressionNode || node instanceof VariableExpressionNode
                 || node instanceof TempVariableExpressionNode;
     }
+
+    private boolean isDateNode(final Object node) {
+        return node instanceof DateExpressionNode || node instanceof VariableExpressionNode
+                || node instanceof TempVariableExpressionNode;
+    }
+
 }

@@ -9,9 +9,10 @@ import org.joo.libra.text.IsEmptyPredicate;
 import lombok.Getter;
 import lombok.Setter;
 
+@Getter
 public class EmptyExpressionNode extends UnaryExpressionNode {
 
-	private @Getter @Setter int op;
+	private @Setter int op;
 
 	@Override
 	public Predicate buildPredicate() {

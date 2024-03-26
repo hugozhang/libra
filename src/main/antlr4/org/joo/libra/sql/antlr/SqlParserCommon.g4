@@ -50,6 +50,7 @@ factor
 	DOUBLE # numberExpr
 	| INTEGER # numberExpr
 	| STRING # stringExpr
+	| DATE # dateExpr
 	| TRUE # booleanExpr
 	| FALSE # booleanExpr
 	| UNDEFINED # nullExpr

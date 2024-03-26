@@ -1,6 +1,7 @@
 package org.joo.libra.test.support;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import lombok.Data;
@@ -11,6 +12,10 @@ public class Person {
 	private String name;
 
 	private long age;
+
+	private Date birthDay;
+
+	private Date birthDay1;
 
 	private int salary = 0;
 
