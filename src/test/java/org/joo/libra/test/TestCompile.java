@@ -6,11 +6,13 @@ import org.joo.libra.support.ObjectUtils;
 import org.joo.libra.support.eval.VariableEvaluator;
 import org.joo.libra.support.eval.impl.CompiledJavaEvaluator;
 import org.joo.libra.test.support.AnotherPerson;
+import org.joo.libra.test.support.JobWithSalary;
 import org.joo.libra.test.support.MockDataUtils;
 import org.joo.libra.test.support.Person;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class TestCompile {
@@ -19,13 +21,20 @@ public class TestCompile {
     public void testDate() throws Exception {
         Date date = new Date();
         Person p = MockDataUtils.mockPerson();
+        p.setName("hello");
         p.setBirthDay(date);
         p.setBirthDay1(date);
+        JobWithSalary oracle = new JobWithSalary("Oracle", 1000);
+        JobWithSalary java = new JobWithSalary("java", 1020);
+        p.setJobWithSalaries(Arrays.asList(oracle,java));
 //        VariableEvaluator evaluator = new CompiledJavaEvaluator();
 //        Assert.assertEquals(date, evaluator.evaluate(p, "birthDay"));
-
+//{'abc', 2, 3} contains 'abc'
+        //ANY $item IN items SATISFIES $item.qty > 1000
         PredicateContext context = new PredicateContext(p);
-        SqlPredicate predicate = new SqlPredicate("birthDay > birthDay1 ",context);
+//        SqlPredicate predicate = new SqlPredicate("{'hello1', 2, 3} contains 'hello'",context);
+        SqlPredicate predicate = new SqlPredicate("any $job in jobWithSalaries satisfies $job.salary >= 1000",context);
+
         boolean b = predicate.satisfiedBy(context);
         System.out.println(b);
     }

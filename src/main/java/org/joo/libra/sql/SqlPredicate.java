@@ -27,7 +27,6 @@ public class SqlPredicate implements CompositionPredicate, LiteralPredicate<Obje
 
 	private Predicate predicate;
 
-	private PredicateContext context;
 
 	public SqlPredicate(final String predicate,final PredicateContext context) {
 		this(predicate, new AntlrSqlPredicateParser(),context);
@@ -36,7 +35,6 @@ public class SqlPredicate implements CompositionPredicate, LiteralPredicate<Obje
 	public SqlPredicate(final String predicate, final @NonNull SqlPredicateParser parser,final PredicateContext context) {
 		try {
 			this.parser = parser;
-			this.context = context;
 			this.predicate = parser.parse(predicate,context);
 			if (this.predicate == null) {
 				error = true;
@@ -65,6 +63,7 @@ public class SqlPredicate implements CompositionPredicate, LiteralPredicate<Obje
 		try {
 			return predicate.satisfiedBy(context);
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			throw new PredicateExecutionException("Exception while executing SQL predicate", ex);
 		}
 	}

@@ -34,7 +34,7 @@ public class ListExpressionNode implements ExpressionNode, HasValue<Object> {
 	public String toString() {
 		if (listItem == null)
 			return null;
-		List<String> elements = listItem.getInnerNode().stream().map(node -> node.toString())
+		List<String> elements = listItem.getInnerNode().stream().map(Object::toString)
 				.collect(Collectors.toList());
 		return "LIST(" + String.join(",", elements) + ")";
 	}

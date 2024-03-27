@@ -124,13 +124,13 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
     public ExpressionNode visitCompareExpr(final SqlParser.CompareExprContext ctx) {
         Object leftValue = ((HasValue<?>) visit(ctx.left)).getValue(context);
         Object rightValue = ((HasValue<?>) visit(ctx.right)).getValue(context);
-        if (leftValue instanceof Number && rightValue instanceof Number) {
+        if (leftValue instanceof Number || rightValue instanceof Number) {
             NumericCompareExpressionNode node = new NumericCompareExpressionNode();
             node.setLeft((HasValue<Number>) visit(ctx.left));
             node.setRight((HasValue<Number>) visit(ctx.right));
             node.setOp(ctx.op.getType());
             return node;
-        } else if (leftValue instanceof Date && rightValue instanceof Date) {
+        } else if (leftValue instanceof Date || rightValue instanceof Date) {
             DateCompareExpressionNode node = new DateCompareExpressionNode();
             node.setLeft((HasValue<Date>) visit(ctx.left));
             node.setRight((HasValue<Date>) visit(ctx.right));
