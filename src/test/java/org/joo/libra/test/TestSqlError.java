@@ -22,7 +22,7 @@ public class TestSqlError {
 
 	@Test
 	public void testError() {
-		SqlPredicate predicate = new SqlPredicate(value);
+		SqlPredicate predicate = new SqlPredicate(value,null);
 		Assert.assertTrue(predicate.hasError() && predicate.getCause() instanceof MalformedSyntaxException);
 	}
 

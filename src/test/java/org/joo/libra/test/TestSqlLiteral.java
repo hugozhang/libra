@@ -26,7 +26,7 @@ public class TestSqlLiteral {
 
     @Test
     public void testLiteral() throws PredicateExecutionException {
-        SqlPredicate predicate = new SqlPredicate(value);
+        SqlPredicate predicate = new SqlPredicate(value,null);
         predicate.checkForErrorAndThrow();
         Assert.assertEquals(value + ":", expected, predicate.calculateLiteralValue(new PredicateContext(null)));
         Assert.assertEquals(value + ":", expected, predicate.calculateLiteralValue(null));

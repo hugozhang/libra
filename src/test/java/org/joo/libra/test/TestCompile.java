@@ -25,8 +25,9 @@ public class TestCompile {
 //        Assert.assertEquals(date, evaluator.evaluate(p, "birthDay"));
 
         PredicateContext context = new PredicateContext(p);
-        SqlPredicate predicate = new SqlPredicate("birthDay > birthDay1 ");
-        predicate.satisfiedBy(context);
+        SqlPredicate predicate = new SqlPredicate("birthDay > birthDay1 ",context);
+        boolean b = predicate.satisfiedBy(context);
+        System.out.println(b);
     }
 
     @Test

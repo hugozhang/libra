@@ -27,7 +27,7 @@ public class TestSqlList {
 
 	@Test
 	public void testSimple() throws PredicateExecutionException {
-		SqlPredicate predicate = new SqlPredicate(value);
+		SqlPredicate predicate = new SqlPredicate(value,null);
 		predicate.checkForErrorAndThrow();
 		Assert.assertEquals(value + ":", expected,
 				predicate.satisfiedBy(new PredicateContext(MockDataUtils.mockPerson())));

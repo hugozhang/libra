@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.ConsoleErrorListener;
 import org.antlr.v4.runtime.RecognitionException;
 import org.antlr.v4.runtime.Recognizer;
+import org.joo.libra.PredicateContext;
 import org.joo.libra.sql.antlr.SqlLexer;
 import org.joo.libra.sql.antlr.SqlParser;
 import org.joo.libra.sql.node.ExpressionNode;
@@ -27,8 +28,8 @@ public class AntlrSqlPredicateParser extends AbstractAntlrSqlPredicateParser<Sql
 		return parser;
 	}
 
-	protected ExpressionNode doParse(final SqlParser parser) {
-		SqlVisitor visitor = new SqlVisitor();
+	protected ExpressionNode doParse(final SqlParser parser,final PredicateContext context) {
+		SqlVisitor visitor = new SqlVisitor(context);
 		return visitor.visit(parser.predicate());
 	}
 }

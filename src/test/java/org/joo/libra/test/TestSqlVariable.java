@@ -32,7 +32,7 @@ public class TestSqlVariable {
 
     @Test
     public void testVariable() {
-        SqlPredicate predicate = new SqlPredicate(value);
+        SqlPredicate predicate = new SqlPredicate(value,null);
         if (predicate.hasError()) {
             if (expected != null)
                 predicate.checkForErrorAndThrow();

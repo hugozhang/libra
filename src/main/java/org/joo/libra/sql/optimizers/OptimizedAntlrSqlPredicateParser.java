@@ -36,8 +36,8 @@ public class OptimizedAntlrSqlPredicateParser extends AntlrSqlPredicateParser {
 	}
 
 	@Override
-	protected ExpressionNode doParse(final SqlParser parser) {
-		ExpressionNode node = super.doParse(parser);
+	protected ExpressionNode doParse(final SqlParser parser,PredicateContext context) {
+		ExpressionNode node = super.doParse(parser,context);
 		optimizedNode = optimize(node);
 		return optimizedNode;
 	}

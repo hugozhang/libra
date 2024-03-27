@@ -2,7 +2,9 @@ package org.joo.libra.sql;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Date;
 
+import org.joo.libra.PredicateContext;
 import org.joo.libra.common.HasList;
 import org.joo.libra.common.HasValue;
 import org.joo.libra.sql.antlr.SqlLexer;
@@ -12,6 +14,12 @@ import org.joo.libra.sql.node.*;
 import org.joo.libra.support.exceptions.MalformedSyntaxException;
 
 public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
+
+    private final PredicateContext context;
+
+    public SqlVisitor(PredicateContext context) {
+        this.context = context;
+    }
 
     @SuppressWarnings("unchecked")
     @Override
@@ -114,18 +122,24 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
     @SuppressWarnings("unchecked")
     @Override
     public ExpressionNode visitCompareExpr(final SqlParser.CompareExprContext ctx) {
-        NumericCompareExpressionNode node = new NumericCompareExpressionNode();
-        node.setLeft((HasValue<Number>) visit(ctx.left));
-        node.setRight((HasValue<Number>) visit(ctx.right));
-        node.setOp(ctx.op.getType());
-
-        if (!isNumberNode(node.getLeft()) || !isNumberNode(node.getRight())) {
+        Object leftValue = ((HasValue<?>) visit(ctx.left)).getValue(context);
+        Object rightValue = ((HasValue<?>) visit(ctx.right)).getValue(context);
+        if (leftValue instanceof Number && rightValue instanceof Number) {
+            NumericCompareExpressionNode node = new NumericCompareExpressionNode();
+            node.setLeft((HasValue<Number>) visit(ctx.left));
+            node.setRight((HasValue<Number>) visit(ctx.right));
+            node.setOp(ctx.op.getType());
+            return node;
+        } else if (leftValue instanceof Date && rightValue instanceof Date) {
+            DateCompareExpressionNode node = new DateCompareExpressionNode();
+            node.setLeft((HasValue<Date>) visit(ctx.left));
+            node.setRight((HasValue<Date>) visit(ctx.right));
+            node.setOp(ctx.op.getType());
+            return node;
+        } else {
             throw new MalformedSyntaxException("Malformed syntax at compare node (" + ctx.op.getText()
-                    + "), number node expected. (" + node.getLeft().getClass().getName() + ","
-                    + node.getRight().getClass().getName() + ") given");
+                    + "), number node or date node expected.");
         }
-
-        return node;
     }
 
     @Override

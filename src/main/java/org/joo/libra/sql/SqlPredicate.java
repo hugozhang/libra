@@ -27,14 +27,17 @@ public class SqlPredicate implements CompositionPredicate, LiteralPredicate<Obje
 
 	private Predicate predicate;
 
-	public SqlPredicate(final String predicate) {
-		this(predicate, new AntlrSqlPredicateParser());
+	private PredicateContext context;
+
+	public SqlPredicate(final String predicate,final PredicateContext context) {
+		this(predicate, new AntlrSqlPredicateParser(),context);
 	}
 
-	public SqlPredicate(final String predicate, final @NonNull SqlPredicateParser parser) {
+	public SqlPredicate(final String predicate, final @NonNull SqlPredicateParser parser,final PredicateContext context) {
 		try {
 			this.parser = parser;
-			this.predicate = parser.parse(predicate);
+			this.context = context;
+			this.predicate = parser.parse(predicate,context);
 			if (this.predicate == null) {
 				error = true;
 				cause = new MalformedSyntaxException("Predicate cannot be parsed");
@@ -49,14 +52,14 @@ public class SqlPredicate implements CompositionPredicate, LiteralPredicate<Obje
 	}
 
 	@Override
-	public Object calculateLiteralValue(final PredicateContext context) throws PredicateExecutionException {
+	public Object calculateLiteralValue(PredicateContext context) throws PredicateExecutionException {
 		if (predicate != null && predicate instanceof LiteralPredicate)
 			return ((LiteralPredicate<?>) predicate).calculateLiteralValue(context);
 		return satisfiedBy(context);
 	}
 
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) throws PredicateExecutionException {
+	public boolean satisfiedBy(PredicateContext context) throws PredicateExecutionException {
 		if (error || predicate == null)
 			return false;
 		try {

@@ -41,7 +41,7 @@ public class TestSqlOptimized {
 
 	@Test
 	public void testOptimized() throws PredicateExecutionException {
-		SqlPredicate predicate = new SqlPredicate(value, new OptimizedAntlrSqlPredicateParser());
+		SqlPredicate predicate = new SqlPredicate(value, new OptimizedAntlrSqlPredicateParser(),null);
 		if (predicate.hasError()) {
 			Assert.assertEquals(value + ":", expected, null);
 		} else {
