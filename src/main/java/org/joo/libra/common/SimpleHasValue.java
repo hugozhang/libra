@@ -12,7 +12,7 @@ import org.joo.libra.PredicateContext;
  */
 public class SimpleHasValue<T> implements HasValue<T> {
 
-	private T value;
+	private final T value;
 
 	public SimpleHasValue(final T value) {
 		this.value = value;

@@ -14,7 +14,7 @@ import org.joo.libra.common.HasValue;
 
 public class FilterMatchPredicate extends AnyMatchPredicate implements HasValue<Collection<?>> {
 
-    private HasValue<?> transform;
+    private final HasValue<?> transform;
 
     public FilterMatchPredicate(HasValue<Object> list, String indexName, Predicate conditionPredicate,
             HasValue<?> transform) {

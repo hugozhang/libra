@@ -10,7 +10,7 @@ public class AvgFunction implements MultiArgsFunction {
 	public Object apply(PredicateContext context, Object[] t) {
 		if (t == null || t.length == 0)
 			throw new IllegalArgumentException("AVG function must have at least one argument");
-		return Arrays.stream(t).map(number -> (Number) number).mapToDouble(number -> number.doubleValue()).average()
-				.getAsDouble();
+		return Arrays.stream(t).map(number -> (Number) number).mapToDouble(Number::doubleValue).average().orElse(0d);
+//				.getAsDouble();
 	}
 }

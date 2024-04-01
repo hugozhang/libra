@@ -2,6 +2,7 @@ package org.joo.libra.logic;
 
 import java.util.Arrays;
 
+import lombok.Getter;
 import org.joo.libra.Predicate;
 import org.joo.libra.PredicateContext;
 import org.joo.libra.common.CompositionPredicate;
@@ -15,11 +16,11 @@ import org.joo.libra.support.exceptions.PredicateExecutionException;
  * @author griever
  *
  */
+@Getter
 public class AndPredicate implements CompositionPredicate {
 
-	private Predicate[] predicates;
+	private final Predicate[] predicates;
 
-	@SafeVarargs
 	public AndPredicate(final Predicate... predicates) {
 		this.predicates = predicates;
 	}
@@ -33,13 +34,9 @@ public class AndPredicate implements CompositionPredicate {
 		return true;
 	}
 
-	public Predicate[] getPredicates() {
-		return predicates;
-	}
-
 	public String toString() {
-		String[] predicatesAsString = Arrays.stream(predicates).map(p -> p.toString())
-				.toArray(size -> new String[size]);
+		String[] predicatesAsString = Arrays.stream(predicates).map(Object::toString)
+				.toArray(String[]::new);
 		return "AND(" + String.join(",", predicatesAsString) + ")";
 	}
 }

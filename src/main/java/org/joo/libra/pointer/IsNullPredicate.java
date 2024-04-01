@@ -13,7 +13,7 @@ import org.joo.libra.common.HasValue;
  */
 public class IsNullPredicate implements CompositionPredicate {
 
-	private HasValue<Object> value;
+	private final HasValue<Object> value;
 
 	public IsNullPredicate(final HasValue<Object> value) {
 		this.value = value;

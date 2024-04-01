@@ -17,7 +17,7 @@ import org.joo.libra.support.exceptions.PredicateExecutionException;
  */
 public class OrPredicate implements CompositionPredicate {
 
-	private Predicate[] predicates;
+	private final Predicate[] predicates;
 
 	public OrPredicate(final Predicate... predicates) {
 		this.predicates = predicates;

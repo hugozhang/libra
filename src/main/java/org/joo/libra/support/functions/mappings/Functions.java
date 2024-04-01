@@ -11,11 +11,9 @@ import lombok.Getter;
 @Getter
 public abstract class Functions {
 
-    private Map<String, MultiArgsFunction> functionMappings = new HashMap<>();
+    private final Map<String, MultiArgsFunction> functionMappings = new HashMap<>();
 
     public MultiArgsFunction getRegisteredFunction(final String name) {
-        if (functionMappings == null)
-            return null;
         return functionMappings.get(name);
     }
 

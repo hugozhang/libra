@@ -19,9 +19,9 @@ import org.joo.libra.PredicateContext;
  */
 public abstract class BinaryPredicate<T, H> implements CompositionPredicate {
 
-	private HasValue<T> one;
+	private final HasValue<T> one;
 
-	private HasValue<H> other;
+	private final HasValue<H> other;
 
 	public BinaryPredicate(final HasValue<T> one, final HasValue<H> other) {
 		this.one = one;

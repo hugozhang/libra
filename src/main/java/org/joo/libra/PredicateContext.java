@@ -27,11 +27,11 @@ public class PredicateContext {
     @Getter
     private Object context;
 
-    private Map<String, Object> cachedValues;
+    private final Map<String, Object> cachedValues;
 
     private Map<String, MultiArgsFunction> functionMappings;
 
-    private Map<String, Object> tempVariables = new HashMap<>();
+    private final Map<String, Object> tempVariables = new HashMap<>();
 
     private VariableEvaluator evaluator = DEFAULT_EVALUATOR;
 

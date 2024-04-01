@@ -5,5 +5,5 @@ import org.joo.libra.support.exceptions.PredicateExecutionException;
 
 public interface LiteralPredicate<T> {
 
-    public T calculateLiteralValue(final PredicateContext context) throws PredicateExecutionException;
+    T calculateLiteralValue(final PredicateContext context) throws PredicateExecutionException;
 }

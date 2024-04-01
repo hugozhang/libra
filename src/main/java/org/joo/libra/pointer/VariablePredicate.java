@@ -21,14 +21,14 @@ import org.joo.libra.support.exceptions.PredicateExecutionException;
  */
 public class VariablePredicate implements CompositionPredicate, LiteralPredicate<Object> {
 
-	private HasValue<Object> value;
+	private final HasValue<Object> value;
 
-	public VariablePredicate(final HasValue<Object> value) {
+	public VariablePredicate(HasValue<Object> value) {
 		this.value = value;
 	}
 
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) {
+	public boolean satisfiedBy(PredicateContext context) {
 		Object rawValue = calculateLiteralValue(context);
 		if (rawValue == null)
 			return false;

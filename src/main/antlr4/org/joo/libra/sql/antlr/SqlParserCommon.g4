@@ -50,7 +50,6 @@ factor
 	DOUBLE # numberExpr
 	| INTEGER # numberExpr
 	| STRING # stringExpr
-	| DATE # dateExpr
 	| TRUE # booleanExpr
 	| FALSE # booleanExpr
 	| UNDEFINED # nullExpr
@@ -79,8 +78,6 @@ list
 
 filter
 :
-	FILTER indexName = TEMP_VAR IN listName = factor SATISFIES condition =
-	expression # filterMatchingExpr
-	| transform = factor FILTER indexName = TEMP_VAR IN listName = factor
-	SATISFIES condition = expression # filterMatchingExpr
+	FILTER indexName = TEMP_VAR IN listName = factor SATISFIES condition = expression # filterMatchingExpr
+	| transform = factor FILTER indexName = TEMP_VAR IN listName = factor SATISFIES condition = expression # filterMatchingExpr
 ;

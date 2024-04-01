@@ -17,5 +17,5 @@ public interface HasList extends HasValue<Collection<?>> {
      * @param context the context
      * @return the value this object is currently holding
      */
-    public Object[] getValueAsArray(final PredicateContext context);
+    Object[] getValueAsArray(final PredicateContext context);
 }

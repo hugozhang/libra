@@ -24,7 +24,7 @@ public interface CompositionPredicate extends Predicate {
 	 *            the predicate
 	 * @return new predicate
 	 */
-	public default Predicate and(final Predicate other) {
+	default Predicate and(final Predicate other) {
 		return new AndPredicate(this, other);
 	}
 
@@ -37,7 +37,7 @@ public interface CompositionPredicate extends Predicate {
 	 *            the predicate
 	 * @return new predicate
 	 */
-	public default Predicate or(final Predicate other) {
+	default Predicate or(final Predicate other) {
 		return new OrPredicate(this, other);
 	}
 
@@ -47,7 +47,7 @@ public interface CompositionPredicate extends Predicate {
 	 * 
 	 * @return new predicate
 	 */
-	public default Predicate not() {
+	default Predicate not() {
 		return new NotPredicate(this);
 	}
 }

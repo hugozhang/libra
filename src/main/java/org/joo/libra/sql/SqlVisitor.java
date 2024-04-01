@@ -226,13 +226,6 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
     }
 
     @Override
-    public ExpressionNode visitDateExpr(SqlParser.DateExprContext ctx) {
-        DateExpressionNode node = new DateExpressionNode();
-
-        return node;
-    }
-
-    @Override
     public ExpressionNode visitBooleanExpr(final SqlParser.BooleanExprContext ctx) {
         BooleanExpressionNode node = new BooleanExpressionNode();
         boolean value = Boolean.valueOf(ctx.getText().toLowerCase());

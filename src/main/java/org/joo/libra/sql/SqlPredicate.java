@@ -63,7 +63,6 @@ public class SqlPredicate implements CompositionPredicate, LiteralPredicate<Obje
 		try {
 			return predicate.satisfiedBy(context);
 		} catch (Exception ex) {
-			ex.printStackTrace();
 			throw new PredicateExecutionException("Exception while executing SQL predicate", ex);
 		}
 	}

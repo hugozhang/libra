@@ -1,7 +1,10 @@
 package org.joo.libra.support.functions.mappings;
 
+import lombok.Getter;
+
 public class GlobalFunctions extends Functions {
 
+    @Getter
     private static final GlobalFunctions instance;
     
     static {
@@ -11,10 +14,6 @@ public class GlobalFunctions extends Functions {
                 .addFunctions(StringFunctions.getInstance());
     }
 
-    public static final GlobalFunctions getInstance() {
-        return instance;
-    }
-    
     private GlobalFunctions() {
         // Nothing to do here
     }

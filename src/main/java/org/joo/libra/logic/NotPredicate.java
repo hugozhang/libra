@@ -14,7 +14,7 @@ import org.joo.libra.support.exceptions.PredicateExecutionException;
  */
 public class NotPredicate implements CompositionPredicate {
 
-	private Predicate predicate;
+	private final Predicate predicate;
 
 	public NotPredicate(final Predicate predicate) {
 		this.predicate = predicate;

@@ -16,7 +16,7 @@ import org.joo.libra.common.HasValue;
  */
 public class IsEmptyPredicate implements CompositionPredicate {
 
-	private HasValue<?> value;
+	private final HasValue<?> value;
 
 	public IsEmptyPredicate(final HasValue<?> value) {
 		this.value = value;

@@ -19,5 +19,5 @@ public interface HasValue<T> {
 	 *            the context
 	 * @return the value this object is currently holding
 	 */
-	public T getValue(final PredicateContext context);
+	T getValue(final PredicateContext context);
 }

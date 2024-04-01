@@ -2,10 +2,10 @@ package org.joo.libra.sql.node;
 
 import org.joo.libra.Predicate;
 import org.joo.libra.common.HasValue;
-import org.joo.libra.numeric.GreaterEqualPredicate;
-import org.joo.libra.numeric.GreaterPredicate;
-import org.joo.libra.numeric.LessEqualPredicate;
-import org.joo.libra.numeric.LessPredicate;
+import org.joo.libra.compare.GreaterEqualPredicate;
+import org.joo.libra.compare.GreaterPredicate;
+import org.joo.libra.compare.LessEqualPredicate;
+import org.joo.libra.compare.LessPredicate;
 import org.joo.libra.sql.antlr.SqlLexer;
 
 public class NumericCompareExpressionNode extends AbstractBinaryOpExpressionNode<HasValue<Object>> {
