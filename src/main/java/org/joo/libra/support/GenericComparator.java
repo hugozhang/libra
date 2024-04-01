@@ -64,7 +64,7 @@ public class GenericComparator {
         return d1.compareTo(d2);
     }
 
-    public static boolean compare(final Object one, final Object other) {
+    public static boolean compareEqual(final Object one, final Object other) {
         if (one == null)
             return other == null;
         if (one instanceof Number && other instanceof Number) {
@@ -74,5 +74,16 @@ public class GenericComparator {
             return compareDate((Date) one, (Date) other) == 0;
         }
         return one.equals(other);
+    }
+
+    public static int compare(final Object one, final Object other) {
+        if (one instanceof Number && other instanceof Number) {
+            return compareNumber((Number) one, (Number) other);
+        }
+        if (one instanceof Date && other instanceof Date) {
+            return compareDate((Date) one, (Date) other);
+        } else {
+            throw new IllegalArgumentException("Cannot compare " + one.getClass() + " and " + other.getClass());
+        }
     }
 }

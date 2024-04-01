@@ -8,7 +8,7 @@ import org.joo.libra.numeric.LessEqualPredicate;
 import org.joo.libra.numeric.LessPredicate;
 import org.joo.libra.sql.antlr.SqlLexer;
 
-public class NumericCompareExpressionNode extends AbstractBinaryOpExpressionNode<HasValue<Number>> {
+public class NumericCompareExpressionNode extends AbstractBinaryOpExpressionNode<HasValue<Object>> {
 
 	@Override
 	public Predicate buildPredicate() {

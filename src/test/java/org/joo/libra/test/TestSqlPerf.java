@@ -56,7 +56,7 @@ public class TestSqlPerf {
 				+ "and name in {'dungba', 'puppie', 'kitty'}" + "and name in bar.foo.collection "
 				+ "and bar IS NOT NULL " //
 				+ "and not bar.foo.name matches '[Ms]ario.*' ";
-		complexPredicate = new SqlPredicate(sql, new OptimizedAntlrSqlPredicateParser(),null);
+		complexPredicate = new SqlPredicate(sql, new OptimizedAntlrSqlPredicateParser());
 		complexPredicate.checkForErrorAndThrow();
 		System.out.println("Parsed expression: " + complexPredicate);
 	}

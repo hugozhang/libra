@@ -12,7 +12,7 @@ import org.joo.libra.sql.node.ExpressionNode;
 public abstract class AbstractAntlrSqlPredicateParser<L extends Lexer, P extends Parser> implements SqlPredicateParser {
 
 	@Override
-	public Predicate parse(final String predicate,PredicateContext context) {
+	public Predicate parse(final String predicate) {
 		CharStream stream = CharStreams.fromString(predicate);
 
 		Lexer lexer = createLexer(stream);
@@ -21,7 +21,7 @@ public abstract class AbstractAntlrSqlPredicateParser<L extends Lexer, P extends
 
 		P parser = createParser(tokens);
 
-		ExpressionNode node = doParse(parser,context);
+		ExpressionNode node = doParse(parser);
 		if (node == null)
 			return null;
 		return node.buildPredicate();
@@ -31,5 +31,5 @@ public abstract class AbstractAntlrSqlPredicateParser<L extends Lexer, P extends
 
 	protected abstract P createParser(CommonTokenStream tokens);
 
-	protected abstract ExpressionNode doParse(P parser, PredicateContext context);
+	protected abstract ExpressionNode doParse(P parser);
 }

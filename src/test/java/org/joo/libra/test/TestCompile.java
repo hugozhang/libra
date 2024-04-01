@@ -33,7 +33,8 @@ public class TestCompile {
         //ANY $item IN items SATISFIES $item.qty > 1000
         PredicateContext context = new PredicateContext(p);
 //        SqlPredicate predicate = new SqlPredicate("{'hello1', 2, 3} contains 'hello'",context);
-        SqlPredicate predicate = new SqlPredicate("any $job in jobWithSalaries satisfies $job.salary >= 1000",context);
+//        SqlPredicate predicate = new SqlPredicate("any $job in jobWithSalaries satisfies $job.salary >= 1000");
+        SqlPredicate predicate = new SqlPredicate("birthDay == birthDay1");
 
         boolean b = predicate.satisfiedBy(context);
         System.out.println(b);

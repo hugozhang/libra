@@ -28,14 +28,14 @@ public class SqlPredicate implements CompositionPredicate, LiteralPredicate<Obje
 	private Predicate predicate;
 
 
-	public SqlPredicate(final String predicate,final PredicateContext context) {
-		this(predicate, new AntlrSqlPredicateParser(),context);
+	public SqlPredicate(final String predicate) {
+		this(predicate, new AntlrSqlPredicateParser());
 	}
 
-	public SqlPredicate(final String predicate, final @NonNull SqlPredicateParser parser,final PredicateContext context) {
+	public SqlPredicate(final String predicate, final @NonNull SqlPredicateParser parser) {
 		try {
 			this.parser = parser;
-			this.predicate = parser.parse(predicate,context);
+			this.predicate = parser.parse(predicate);
 			if (this.predicate == null) {
 				error = true;
 				cause = new MalformedSyntaxException("Predicate cannot be parsed");

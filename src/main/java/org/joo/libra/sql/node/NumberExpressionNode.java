@@ -4,19 +4,19 @@ import org.joo.libra.Predicate;
 import org.joo.libra.common.SimpleLiteralPredicate;
 import org.joo.libra.support.GenericComparator;
 
-public class NumberExpressionNode extends ValueExpressionNode<Number> {
+public class NumberExpressionNode extends ValueExpressionNode<Object> {
 
 	public NumberExpressionNode() {
 
 	}
 
-	public NumberExpressionNode(final Number value) {
+	public NumberExpressionNode(final Object value) {
 		this.value = value;
 	}
 
 	@Override
 	public Predicate buildPredicate() {
-		return new SimpleLiteralPredicate<Number>(value, value != null && GenericComparator.compareNumber(value, 0) != 0);
+		return new SimpleLiteralPredicate<>(value, value != null && GenericComparator.compare(value, 0) != 0);
 	}
 
 	public String toString() {

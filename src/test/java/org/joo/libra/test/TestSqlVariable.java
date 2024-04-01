@@ -32,7 +32,7 @@ public class TestSqlVariable {
 
     @Test
     public void testVariable() {
-        SqlPredicate predicate = new SqlPredicate(value,null);
+        SqlPredicate predicate = new SqlPredicate(value);
         if (predicate.hasError()) {
             if (expected != null)
                 predicate.checkForErrorAndThrow();
@@ -115,13 +115,13 @@ public class TestSqlVariable {
 //                "any $salary in ($job.salary with $job in jobWithSalaries satisfies $job.salary > 500) satisfies $salary >= 1000",
 //                true, context });
 //
-//        list.add(new Object[] { "sum($job.salary with $job in jobWithSalaries satisfies $job.salary > 500) == 1000",
-//                true, context });
+        list.add(new Object[] { "sum($job.salary with $job in jobWithSalaries satisfies $job.salary > 500) == 1000",
+                true, context });
 //
 //        list.add(new Object[] { "any $item in {1, 2, 3} satisfies $item >= 1000", false, context });
 //        list.add(new Object[] { "any $item in {1, 2, 3} satisfies $item == 2", true, context });
 //
-        list.add(new Object[] { "any $job in jobWithSalaries satisfies $job.salary >= 1000", true, context });
+//        list.add(new Object[] { "any $job in jobWithSalaries satisfies $job.salary >= 1000", true, context });
 //        list.add(new Object[] { "any $job in jobWithSalaries satisfies $job.salary < 1000", true, context });
 //        list.add(new Object[] { "any $job in jobWithSalaries satisfies $job.salary < 500", false, context });
 //

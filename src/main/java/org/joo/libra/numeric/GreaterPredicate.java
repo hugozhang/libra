@@ -10,14 +10,14 @@ import org.joo.libra.support.GenericComparator;
  * @author griever
  *
  */
-public class GreaterPredicate extends BinaryPredicate<Number, Number> {
+public class GreaterPredicate extends BinaryPredicate<Object, Object> {
 
-	public GreaterPredicate(final HasValue<Number> one, final HasValue<Number> other) {
+	public GreaterPredicate(final HasValue<Object> one, final HasValue<Object> other) {
 		super(one, other);
 	}
 
 	@Override
-	protected boolean doSatisifiedBy(final Number one, final Number other) {
-		return GenericComparator.compareNumber(one, other) > 0;
+	protected boolean doSatisifiedBy(final Object one, final Object other) {
+		return GenericComparator.compare(one, other) > 0;
 	}
 }

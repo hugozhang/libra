@@ -28,8 +28,8 @@ public class AntlrSqlPredicateParser extends AbstractAntlrSqlPredicateParser<Sql
 		return parser;
 	}
 
-	protected ExpressionNode doParse(final SqlParser parser,final PredicateContext context) {
-		SqlVisitor visitor = new SqlVisitor(context);
+	protected ExpressionNode doParse(final SqlParser parser) {
+		SqlVisitor visitor = new SqlVisitor();
 		return visitor.visit(parser.predicate());
 	}
 }
