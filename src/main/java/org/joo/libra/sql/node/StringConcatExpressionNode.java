@@ -10,7 +10,7 @@ public class StringConcatExpressionNode extends AbstractBinaryOpExpressionNode<H
 
     @Override
     public Predicate buildPredicate() {
-        return new DerivedLiteralPredicate<String>(this, value -> value != null && !value.isEmpty());
+        return new DerivedLiteralPredicate<>(this, value -> value != null && !value.isEmpty());
     }
 
     @Override

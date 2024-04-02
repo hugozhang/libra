@@ -19,7 +19,7 @@ public class ListUtils {
         if (list == null)
             return false;
         for (Object o : list) {
-            if (GenericComparator.compareEqual(o, item))
+            if (GenericComparator.equals(o, item))
                 return true;
         }
         return false;

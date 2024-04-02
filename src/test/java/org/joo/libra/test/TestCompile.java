@@ -22,8 +22,8 @@ public class TestCompile {
         Date date = new Date();
         Person p = MockDataUtils.mockPerson();
         p.setName("hello");
-        p.setBirthDay(date);
-        p.setBirthDay1(date);
+        p.setBirthDay(null);
+        p.setBirthDay1(null);
         JobWithSalary oracle = new JobWithSalary("Oracle", 1000);
         JobWithSalary java = new JobWithSalary("java", 1020);
         p.setJobWithSalaries(Arrays.asList(oracle,java));
@@ -33,8 +33,8 @@ public class TestCompile {
         //ANY $item IN items SATISFIES $item.qty > 1000
         PredicateContext context = new PredicateContext(p);
 //        SqlPredicate predicate = new SqlPredicate("{'hello1', 2, 3} contains 'hello'",context);
-        SqlPredicate predicate = new SqlPredicate("sum($job.salary with $job in jobWithSalaries satisfies $job.salary > 500) == 1000");
-//        SqlPredicate predicate = new SqlPredicate("birthDay < birthDay1");
+//        SqlPredicate predicate = new SqlPredicate("sum($job.salary with $job in jobWithSalaries satisfies $job.salary > 500) == 1000");
+        SqlPredicate predicate = new SqlPredicate("birthDay == birthDay1");
 
         boolean b = predicate.satisfiedBy(context);
         System.out.println(b);

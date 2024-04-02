@@ -24,6 +24,6 @@ public class EqualsPredicate extends BinaryPredicate {
 
 	@Override
 	protected boolean doSatisifiedBy(final Object one, final Object other) {
-		return GenericComparator.compareEqual(one, other);
+		return GenericComparator.equals(one, other);
 	}
 }

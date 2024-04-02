@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class ThreadLocalExpressionCache implements ExpressionEvaluatorCache {
 
-    private ThreadLocal<Map<EvaluationKey, ExpressionEvaluator>> cache = ThreadLocal.withInitial(() -> new HashMap<>());
+    private final ThreadLocal<Map<EvaluationKey, ExpressionEvaluator>> cache = ThreadLocal.withInitial(HashMap::new);
 
     @Override
     public ExpressionEvaluator get(EvaluationKey variableName) {

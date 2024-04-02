@@ -3,6 +3,7 @@ package org.joo.libra.sql.optimizers;
 import java.util.HashSet;
 import java.util.Set;
 
+import lombok.Getter;
 import org.joo.libra.Predicate;
 import org.joo.libra.PredicateContext;
 import org.joo.libra.common.HasValue;
@@ -22,6 +23,7 @@ public class ConstantFoldingOptimizer implements Optimizer {
 
 	private Set<ExpressionNode> hasVariableNodes;
 
+	@Getter
 	private PredicateContext context;
 
 	private int changes = 0;
@@ -143,10 +145,6 @@ public class ConstantFoldingOptimizer implements Optimizer {
 		} catch (PredicateExecutionException e) {
 			throw new MalformedSyntaxException(e);
 		}
-	}
-
-	public PredicateContext getContext() {
-		return context;
 	}
 
 	@Override

@@ -32,10 +32,10 @@ public abstract class BinaryPredicate<T, H> implements CompositionPredicate {
 	public boolean satisfiedBy(final PredicateContext context) {
 		T theOne = one != null ? one.getValue(context) : null;
 		H theOther = other != null ? other.getValue(context) : null;
-		if (theOne == null && theOther == null)
-			return true;
-		if (theOne == null || theOther == null)
-			return false;
+//		if (theOne == null && theOther == null)
+//			return true;
+//		if (theOne == null || theOther == null)
+//			return false;
 		return doSatisifiedBy(theOne, theOther);
 	}
 

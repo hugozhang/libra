@@ -13,11 +13,9 @@ public class OptimizedAntlrSqlPredicateParser extends AntlrSqlPredicateParser {
 
 	private @Getter ExpressionNode optimizedNode;
 
-	private PredicateContext context = new PredicateContext(null);
+	private final Optimizer[] optimizers;
 
-	private Optimizer[] optimizers;
-
-	private int threshold = DEFAULT_THRESHOLD;
+	private final int threshold;
 
 	public OptimizedAntlrSqlPredicateParser() {
 		this(DEFAULT_THRESHOLD, new ConstantFoldingOptimizer());
@@ -31,6 +29,7 @@ public class OptimizedAntlrSqlPredicateParser extends AntlrSqlPredicateParser {
 		this.threshold = threshold;
 		this.optimizers = optimizers;
 		for (Optimizer optimizer : optimizers) {
+			PredicateContext context = new PredicateContext(null);
 			optimizer.setContext(context);
 		}
 	}

@@ -26,7 +26,7 @@ public class ResolvedExpressionBuilder implements ExpressionBuilder {
 
             String fieldName = indexed == -1 ? frag : frag.substring(0, indexed);
             Method method = tryWithGetter(currentType, fieldName);
-            sb.append("." + method.getName() + "()");
+            sb.append(".").append(method.getName()).append("()");
 
             Class<?> parentType = currentType;
             currentType = method.getReturnType();

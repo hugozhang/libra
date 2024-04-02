@@ -64,9 +64,10 @@ public class GenericComparator {
         return d1.compareTo(d2);
     }
 
-    public static boolean compareEqual(final Object one, final Object other) {
-        if (one == null)
+    public static boolean equals(final Object one, final Object other) {
+        if (one == null) {
             return other == null;
+        }
         if (one instanceof Number && other instanceof Number) {
             return compareNumber((Number) one, (Number) other) == 0;
         }
@@ -77,6 +78,17 @@ public class GenericComparator {
     }
 
     public static int compare(final Object one, final Object other) {
+        if (one == null) {
+            if (other == null) {
+                return 0;
+            } else {
+                return -1;
+            }
+        } else {
+            if (other == null) {
+                return 1;
+            }
+        }
         if (one instanceof Number && other instanceof Number) {
             return compareNumber((Number) one, (Number) other);
         }

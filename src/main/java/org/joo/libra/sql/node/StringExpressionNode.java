@@ -7,7 +7,7 @@ public class StringExpressionNode extends ValueExpressionNode<String> {
 
 	@Override
 	public Predicate buildPredicate() {
-		return new SimpleLiteralPredicate<String>(value, value != null && !value.isEmpty());
+		return new SimpleLiteralPredicate<>(value, value != null && !value.isEmpty());
 	}
 
 	public String toString() {
