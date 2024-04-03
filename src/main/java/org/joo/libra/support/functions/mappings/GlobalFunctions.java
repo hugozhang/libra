@@ -11,7 +11,8 @@ public class GlobalFunctions extends Functions {
         instance = new GlobalFunctions();
         instance.addFunctions(AggregateFunctions.getInstance()) //
                 .addFunctions(MathFunctions.getInstance()) //
-                .addFunctions(StringFunctions.getInstance());
+                .addFunctions(StringFunctions.getInstance())
+                .addFunctions(ListFunctions.getInstance());
     }
 
     private GlobalFunctions() {

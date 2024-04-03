@@ -17,12 +17,14 @@ expression
 	| term # termExpr
 	| main = expression QUESTION left = factor COLON right = factor #
 	conditionalExpr
-	| op = ANY indexName = TEMP_VAR IN listName = factor SATISFIES condition =
+	| op = ANY FOR indexName = TEMP_VAR IN listName = factor IF condition =
 	expression # listMatchingExpr
-	| op = NONE indexName = TEMP_VAR IN listName = factor SATISFIES condition =
+	| op = NONE FOR indexName = TEMP_VAR IN listName = factor IF condition =
 	expression # listMatchingExpr
-	| op = ALL indexName = TEMP_VAR IN listName = factor SATISFIES condition =
+	| op = ALL FOR indexName = TEMP_VAR IN listName = factor IF condition =
 	expression # listMatchingExpr
+	| op = EXIST FOR indexName = TEMP_VAR IN listName = factor IF condition =
+    expression # listMatchingExpr
 	| filter # filterMatching
 ;
 
@@ -66,6 +68,7 @@ factor
 	| left = factor op = MINUS right = factor # mathExpr
 	| left = factor op = MOD right = factor # mathExpr
 	| LBRACE item = list RBRACE # wrapListExpr
+	| LBRACE listResult = expression RBRACE # wrapListExpr
 	| LBRACE RBRACE # wrapListExpr
 ;
 
@@ -78,6 +81,6 @@ list
 
 filter
 :
-	FILTER indexName = TEMP_VAR IN listName = factor SATISFIES condition = expression # filterMatchingExpr
-	| transform = factor FILTER indexName = TEMP_VAR IN listName = factor SATISFIES condition = expression # filterMatchingExpr
+	FOR indexName = TEMP_VAR IN listName = factor IF condition = expression # filterMatchingExpr
+	| transform = factor FOR indexName = TEMP_VAR IN listName = factor IF condition = expression # filterMatchingExpr
 ;

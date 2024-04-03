@@ -22,7 +22,7 @@ public class TestCompile {
         Date date = new Date();
         Person p = MockDataUtils.mockPerson();
         p.setName("hello");
-        p.setBirthDay(null);
+        p.setBirthDay(date);
         p.setBirthDay1(null);
         JobWithSalary oracle = new JobWithSalary("Oracle", 1000);
         JobWithSalary java = new JobWithSalary("java", 1020);
@@ -32,9 +32,18 @@ public class TestCompile {
 //{'abc', 2, 3} contains 'abc'
         //ANY $item IN items SATISFIES $item.qty > 1000
         PredicateContext context = new PredicateContext(p);
-//        SqlPredicate predicate = new SqlPredicate("{'hello1', 2, 3} contains 'hello'",context);
+//        SqlPredicate predicate = new SqlPredicate("{'hello1', 2, 3} contains 'hello1' and {'hello1', 2, 3} contains 2");
 //        SqlPredicate predicate = new SqlPredicate("sum($job.salary with $job in jobWithSalaries satisfies $job.salary > 500) == 1000");
-        SqlPredicate predicate = new SqlPredicate("birthDay == birthDay1");
+//        SqlPredicate predicate = new SqlPredicate("sum($job.salary for $job in jobWithSalaries if $job.salary > 500)==2020");
+        context.setTempVariable("$jobWithSalaries",Arrays.asList(oracle,java));
+        SqlPredicate predicate = new SqlPredicate("every for $job in jobWithSalaries if $job.salary > 100");
+//        SqlPredicate predicate = new SqlPredicate("join($jobWithSalaries,'name')");
+
+//        SqlPredicate predicate = new SqlPredicate("birthDay == birthDay1");
+
+        if (predicate.hasError()) {
+            predicate.checkForErrorAndThrow();
+        }
 
         boolean b = predicate.satisfiedBy(context);
         System.out.println(b);

@@ -4,6 +4,7 @@ import org.joo.libra.Predicate;
 import org.joo.libra.common.HasValue;
 import org.joo.libra.functional.AllMatchPredicate;
 import org.joo.libra.functional.AnyMatchPredicate;
+import org.joo.libra.functional.EveryMatchPredicate;
 import org.joo.libra.functional.NoneMatchPredicate;
 import org.joo.libra.sql.antlr.SqlLexer;
 
@@ -30,6 +31,8 @@ public class MatchingExpressionNode implements ExpressionNode {
 			return new AllMatchPredicate(list, indexName, conditionPredicate);
 		case SqlLexer.NONE:
 			return new NoneMatchPredicate(list, indexName, conditionPredicate);
+		case SqlLexer.EXIST:
+			return new EveryMatchPredicate(list, indexName, conditionPredicate);
 		default:
 			return null;
 		}

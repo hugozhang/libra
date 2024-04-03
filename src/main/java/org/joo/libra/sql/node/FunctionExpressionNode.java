@@ -24,19 +24,19 @@ public class FunctionExpressionNode implements ExpressionNode, HasValue<Object> 
 
 	@Override
 	public Object getValue(final PredicateContext context) {
-		MultiArgsFunction handler = getHandler(context);
+		MultiArgsFunction func = getFunc(context);
 		Object[] args = getArgs(context);
-		return handler.apply(context, args);
+		return func.apply(context, args);
 	}
 
-	private MultiArgsFunction getHandler(final PredicateContext context) {
-		MultiArgsFunction handler = context != null ? context.getRegisteredFunction(name) : null;
-		if (handler != null)
-			return handler;
-		handler = GlobalFunctions.getInstance().getRegisteredFunction(name);
-		if (handler == null)
+	private MultiArgsFunction getFunc(final PredicateContext context) {
+		MultiArgsFunction func = context != null ? context.getRegisteredFunction(name) : null;
+		if (func != null)
+			return func;
+		func = GlobalFunctions.getInstance().getRegisteredFunction(name);
+		if (func == null)
 			throw new IllegalArgumentException("Function " + name + " is not defined");
-		return handler;
+		return func;
 	}
 
 	public Object[] getArgs(final PredicateContext context) {

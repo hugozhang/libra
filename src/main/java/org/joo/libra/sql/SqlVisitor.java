@@ -59,6 +59,8 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
         ListExpressionNode node = new ListExpressionNode();
         if (ctx.item != null)
             node.setListItem((ListItemExpressionNode) visit(ctx.item));
+        if (ctx.listResult != null)
+            node.setListItem((ListItemExpressionNode) visit(ctx.listResult));
         return node;
     }
 

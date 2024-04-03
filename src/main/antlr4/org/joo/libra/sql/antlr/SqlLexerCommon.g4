@@ -21,9 +21,12 @@ NULL:					('NULL' | 'null') ;
 ANY:					('ANY' | 'any') ;
 NONE:					('NONE' | 'none') ;
 ALL:					('ALL' | 'all') ;
+EXIST:					('EXIST' | 'exist') ;
 FILTER:					('WITH' | 'with') ;
 OF:						('OF' | 'of') ;
 SATISFIES:				('SATISFIES' | 'satisfies') ;
+IF:				        ('IF' | 'if') ;
+FOR:				    ('FOR' | 'for') ;
 
 GREATER_THAN:			'>' ;
 GREATER_THAN_EQUALS:	'>=' ;
@@ -49,6 +52,7 @@ STRING:					'\'' ~('\r' | '\n' | '\'')* '\'' ;
 INTEGER:				'-'* Digit+ ;
 DOUBLE:					'-'* Digit+'.'Digit+ ;
 INDEX:					'[' Digit+ ']' ;
+
 VARIABLE:				Alpha+ (Alpha | Digit | INDEX)* ;
 TEMP_VAR:				'$' Alpha+ (Alpha | Digit | INDEX)* ;
 WS: 					(' ' | '\t')+ -> channel(HIDDEN) ;
