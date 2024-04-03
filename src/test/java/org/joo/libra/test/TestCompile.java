@@ -36,7 +36,7 @@ public class TestCompile {
 //        SqlPredicate predicate = new SqlPredicate("sum($job.salary with $job in jobWithSalaries satisfies $job.salary > 500) == 1000");
 //        SqlPredicate predicate = new SqlPredicate("sum($job.salary for $job in jobWithSalaries if $job.salary > 500)==2020");
         context.setTempVariable("$jobWithSalaries",Arrays.asList(oracle,java));
-        SqlPredicate predicate = new SqlPredicate("every for $job in jobWithSalaries if $job.salary > 100");
+        SqlPredicate predicate = new SqlPredicate("all for $job in jobWithSalaries if $job.salary > 10000");
 //        SqlPredicate predicate = new SqlPredicate("join($jobWithSalaries,'name')");
 
 //        SqlPredicate predicate = new SqlPredicate("birthDay == birthDay1");
