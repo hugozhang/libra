@@ -12,6 +12,7 @@ public class GlobalFunctions extends Functions {
         instance.addFunctions(AggregateFunctions.getInstance()) //
                 .addFunctions(MathFunctions.getInstance()) //
                 .addFunctions(StringFunctions.getInstance())
+                .addFunctions(DateFunctions.getInstance())
                 .addFunctions(ListFunctions.getInstance());
     }
 

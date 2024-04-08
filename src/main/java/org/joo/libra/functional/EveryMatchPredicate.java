@@ -8,6 +8,8 @@ import org.joo.libra.sql.node.VariableExpressionNode;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class EveryMatchPredicate extends AbstractFunctionalMatchPredicate {
 
@@ -17,16 +19,16 @@ public class EveryMatchPredicate extends AbstractFunctionalMatchPredicate {
 
     @Override
     protected boolean satisfiesAsCollection(Collection<?> listValue, PredicateContext context) {
-        boolean b = listValue.stream().filter(value -> {
+        List<?> collected = listValue.stream().filter(value -> {
             boolean isSatisfied = satisfiedBy(value, context);
             if (isSatisfied) {
                 TempResultHolder.getTempResults().add(value);
             }
             return isSatisfied;
-        }).count() != listValue.size();
+        }).collect(Collectors.toList());
         VariableExpressionNode variableExpressionNode = (VariableExpressionNode) list;
         context.setTempVariable("$" + variableExpressionNode.getVariableName(), TempResultHolder.getTempResults());
-        return b;
+        return !collected.isEmpty();
     }
 
     @Override

@@ -19,11 +19,13 @@ public class TestCompile {
 
     @Test
     public void testDate() throws Exception {
-        Date date = new Date();
+        Date date = new Date(2024,4,1);
+        Date date1 = new Date(2024,4,7);
+
         Person p = MockDataUtils.mockPerson();
         p.setName("hello");
         p.setBirthDay(date);
-        p.setBirthDay1(null);
+        p.setBirthDay1(date1);
         JobWithSalary oracle = new JobWithSalary("Oracle", 1000);
         JobWithSalary java = new JobWithSalary("java", 1020);
         p.setJobWithSalaries(Arrays.asList(oracle,java));
@@ -36,10 +38,10 @@ public class TestCompile {
 //        SqlPredicate predicate = new SqlPredicate("sum($job.salary with $job in jobWithSalaries satisfies $job.salary > 500) == 1000");
 //        SqlPredicate predicate = new SqlPredicate("sum($job.salary for $job in jobWithSalaries if $job.salary > 500)==2020");
         context.setTempVariable("$jobWithSalaries",Arrays.asList(oracle,java));
-        SqlPredicate predicate = new SqlPredicate("all for $job in jobWithSalaries if $job.salary > 10000");
+//        SqlPredicate predicate = new SqlPredicate("all for $job in jobWithSalaries if $job.salary > 10000");
 //        SqlPredicate predicate = new SqlPredicate("join($jobWithSalaries,'name')");
 
-//        SqlPredicate predicate = new SqlPredicate("birthDay == birthDay1");
+        SqlPredicate predicate = new SqlPredicate("diffDays(birthDay,birthDay1)");
 
         if (predicate.hasError()) {
             predicate.checkForErrorAndThrow();
