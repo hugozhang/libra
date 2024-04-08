@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class HashMapExpressionCache implements ExpressionEvaluatorCache {
 
-    private Map<EvaluationKey, ExpressionEvaluator> cache = new HashMap<>();
+    private final Map<EvaluationKey, ExpressionEvaluator> cache = new HashMap<>();
 
     @Override
     public void put(EvaluationKey key, ExpressionEvaluator value) {

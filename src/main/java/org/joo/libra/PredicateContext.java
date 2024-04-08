@@ -32,7 +32,6 @@ public class PredicateContext {
     private Map<String, MultiArgsFunction> functionMappings;
 
     private final Map<String, Object> tempVariables = new HashMap<>();
-    private final Map<String, Object> tempResultVariables = new HashMap<>();
 
     private VariableEvaluator evaluator = DEFAULT_EVALUATOR;
 
@@ -58,7 +57,7 @@ public class PredicateContext {
     public Object getVariableValue(final String name, final PredicateContext context) {
         Object value = cachedValues.get(name);
         if (value == null) {
-            value = getValueNoCache(name, context);
+            value = evaluateValue(name, context);
             cachedValues.put(name, value);
         }
         return value;
@@ -74,17 +73,7 @@ public class PredicateContext {
         }
     }
 
-    public Object getTempResultVariableValue(String name) {
-        if (tempResultVariables.containsKey(name))
-            return tempResultVariables.get(name);
-        try {
-            return DEFAULT_EVALUATOR.evaluate(tempResultVariables, name);
-        } catch (Exception e) {
-            throw new PredicateValueException(e);
-        }
-    }
-
-    private Object getValueNoCache(final String name, final PredicateContext context) {
+    private Object evaluateValue(final String name, final PredicateContext context) {
         try {
             return evaluator.evaluate(context.getContext(), name);
         } catch (Exception e) {
