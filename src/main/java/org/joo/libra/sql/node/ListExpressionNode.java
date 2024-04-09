@@ -1,8 +1,6 @@
 package org.joo.libra.sql.node;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.joo.libra.Predicate;
@@ -27,7 +25,7 @@ public class ListExpressionNode implements ExpressionNode, HasValue<Object> {
 	@Override
 	public Collection<?> getValue(final PredicateContext context) {
 		if (listItem == null)
-			return Collections.emptyList();
+			return new ArrayList<>();
 		return listItem.getValue(context);
 	}
 

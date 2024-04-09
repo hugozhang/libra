@@ -18,6 +18,6 @@ public class GreaterEqualPredicate extends BinaryPredicate<Object, Object> {
 
 	@Override
 	protected boolean doSatisifiedBy(final Object one, final Object other) {
-		return GenericComparator.compare(one, other) == 0;
+		return GenericComparator.compare(one, other) >= 0;
 	}
 }

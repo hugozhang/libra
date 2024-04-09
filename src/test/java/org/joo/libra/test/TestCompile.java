@@ -41,11 +41,15 @@ public class TestCompile {
 //        SqlPredicate predicate = new SqlPredicate("all for $job in jobWithSalaries if $job.salary > 10000");
 //        SqlPredicate predicate = new SqlPredicate("join($jobWithSalaries,'name')");
 
-        SqlPredicate predicate = new SqlPredicate("diffDays(birthDay,birthDay1)");
+//        SqlPredicate predicate = new SqlPredicate("diffDays(birthDay,birthDay1)");
+
+        SqlPredicate predicate = new SqlPredicate("jobs append '123'");
 
         if (predicate.hasError()) {
             predicate.checkForErrorAndThrow();
         }
+
+        Object value = predicate.calculateLiteralValue(context);
 
         boolean b = predicate.satisfiedBy(context);
         System.out.println(b);

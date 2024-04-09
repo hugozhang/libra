@@ -165,6 +165,14 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
         return node;
     }
 
+    public ExpressionNode visitAppendExpr(SqlParser.AppendExprContext ctx) {
+        AppendExpressionNode node = new AppendExpressionNode();
+        node.setLeft((HasValue<?>) visit(ctx.left));
+        node.setRight((HasValue<?>) visit(ctx.right));
+        node.setOp(ctx.op.getType());
+        return node;
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public ExpressionNode visitMatchesExpr(final SqlParser.MatchesExprContext ctx) {

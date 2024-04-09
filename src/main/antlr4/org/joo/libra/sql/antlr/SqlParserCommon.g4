@@ -43,6 +43,7 @@ term
 	| left = factor op = IS_NOT_EMPTY # emptyExpr
 	| left = factor op = CONTAINS right = factor # containsExpr
 	| left = factor op = MATCHES right = factor # matchesExpr
+	| left = factor op = APPEND right = factor # appendExpr
 	| factor # factorExpr
 	| left = factor op = IN right = factor # inExpr
 ;
@@ -67,9 +68,9 @@ factor
 	| left = factor op = PLUS right = factor # mathExpr
 	| left = factor op = MINUS right = factor # mathExpr
 	| left = factor op = MOD right = factor # mathExpr
-	| LBRACE item = list RBRACE # wrapListExpr
-	| LBRACE listResult = expression RBRACE # wrapListExpr
-	| LBRACE RBRACE # wrapListExpr
+	| LSQUARE item = list RSQUARE # wrapListExpr
+	| LSQUARE listResult = expression RSQUARE # wrapListExpr
+	| LSQUARE RSQUARE # wrapListExpr
 ;
 
 list
