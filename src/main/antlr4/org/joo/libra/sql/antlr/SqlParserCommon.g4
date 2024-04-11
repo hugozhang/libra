@@ -44,6 +44,7 @@ term
 	| left = factor op = CONTAINS right = factor # containsExpr
 	| left = factor op = MATCHES right = factor # matchesExpr
 	| left = factor op = APPEND right = factor # appendExpr
+	| PRINT right = factor   # printExpr
 	| factor # factorExpr
 	| left = factor op = IN right = factor # inExpr
 ;

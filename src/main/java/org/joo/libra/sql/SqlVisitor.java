@@ -224,6 +224,12 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
         return node;
     }
 
+    public ExpressionNode visitPrintExpr(SqlParser.PrintExprContext ctx) {
+        PrintExpressionNode node = new PrintExpressionNode();
+        node.setInnerNode(visit(ctx.right));
+        return node;
+    }
+
     @Override
     public ExpressionNode visitNumberExpr(final SqlParser.NumberExprContext ctx) {
         NumberExpressionNode node = new NumberExpressionNode();
@@ -238,7 +244,7 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
     @Override
     public ExpressionNode visitBooleanExpr(final SqlParser.BooleanExprContext ctx) {
         BooleanExpressionNode node = new BooleanExpressionNode();
-        boolean value = Boolean.valueOf(ctx.getText().toLowerCase());
+        boolean value = Boolean.parseBoolean(ctx.getText().toLowerCase());
         node.setValue(value);
         return node;
     }
@@ -258,11 +264,8 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
                 concatNode.setRight((HasValue<String>) visit(ctx.right));
                 return concatNode;
             }
-
-            throw new MalformedSyntaxException(
-                    "Malformed syntax at math node (" + ctx.op.getText() + "), number node expected");
+            throw new MalformedSyntaxException("Malformed syntax at math node (" + ctx.op.getText() + "), number node expected");
         }
-
         return node;
     }
 

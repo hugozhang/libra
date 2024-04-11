@@ -43,13 +43,16 @@ public class TestCompile {
 
 //        SqlPredicate predicate = new SqlPredicate("diffDays(birthDay,birthDay1)");
 
-        SqlPredicate predicate = new SqlPredicate("jobs append '123'");
+//        SqlPredicate predicate = new SqlPredicate("jobs append '123'");
+
+        SqlPredicate predicate = new SqlPredicate("print jobs");
+
 
         if (predicate.hasError()) {
             predicate.checkForErrorAndThrow();
         }
 
-        Object value = predicate.calculateLiteralValue(context);
+//        Object value = predicate.calculateLiteralValue(context);
 
         boolean b = predicate.satisfiedBy(context);
         System.out.println(b);

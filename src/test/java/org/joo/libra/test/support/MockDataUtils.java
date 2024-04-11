@@ -26,7 +26,7 @@ public class MockDataUtils {
         person.setAge(27);
         person.setDemographic(new Demographic());
         person.getDemographic().setGender("male");
-        person.setJobs(new String[] { "Oracle" });
+        person.setJobs(new String[] { "Oracle","MySQL" });
         person.setJobList(new ArrayList<>(Arrays.asList(new String[] { "Oracle", "Google" })));
         person.setJobWithSalaries(
                 new ArrayList<>(Arrays.asList(new JobWithSalary("Oracle", 1000), new JobWithSalary("Paypal", 500))));

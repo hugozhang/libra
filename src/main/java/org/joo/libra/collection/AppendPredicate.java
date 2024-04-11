@@ -9,7 +9,7 @@ import java.util.Collection;
 
 /**
  * A predicate to check if one object is contained by another collection. It
- * will use Java built-in <code>contains</code> method of
+ * will use Java built-in <code>append</code> method of
  * {@link Collection}
  * 
  * @author griever
