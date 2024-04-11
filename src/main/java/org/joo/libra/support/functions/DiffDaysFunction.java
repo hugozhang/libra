@@ -13,16 +13,16 @@ public class DiffDaysFunction implements MultiArgsFunction {
     @Override
     public Object apply(PredicateContext context, Object[] t) {
         if (t == null || t.length != 2)
-            throw new IllegalArgumentException("DiffDays function must have at least two argument");
+            throw new IllegalArgumentException("diffDays function must have at least two argument");
         Object obj = t[0];
         Object obj2 = t[1];
         if (obj == null || obj2 == null)
-            throw new IllegalArgumentException("DiffDays argument must Date and not null");
+            throw new IllegalArgumentException("diffDays argument must Date and not null");
         if (!(obj instanceof Date)) {
-            throw new IllegalArgumentException("DiffDays fist argument must Date");
+            throw new IllegalArgumentException("diffDays fist argument must Date");
         }
         if (!(obj2 instanceof Date)) {
-            throw new IllegalArgumentException("DiffDays second argument must be Date");
+            throw new IllegalArgumentException("diffDays second argument must be Date");
         }
         return Period.between(convert((Date)obj),convert((Date)obj2)).getDays();
 
