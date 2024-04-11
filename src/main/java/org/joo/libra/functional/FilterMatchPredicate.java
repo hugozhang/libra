@@ -31,7 +31,7 @@ public class FilterMatchPredicate extends AnyMatchPredicate implements HasValue<
     }
 
     protected List<?> filterWithStream(PredicateContext context, Stream<?> stream) {
-        return stream.filter(value -> satisfiedBy(value, context)) //
+        return stream.filter(value -> test(value, context)) //
                      .map(value -> transform != null ? transform.getValue(context) : value) //
                      .collect(toList());
     }

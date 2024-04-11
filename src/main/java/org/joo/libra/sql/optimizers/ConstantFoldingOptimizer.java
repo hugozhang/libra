@@ -141,7 +141,7 @@ public class ConstantFoldingOptimizer implements Optimizer {
 	private boolean evaluateNode(final ExpressionNode node) {
 		Predicate predicate = node.buildPredicate();
 		try {
-			return predicate.satisfiedBy(context);
+			return predicate.test(context);
 		} catch (PredicateExecutionException e) {
 			throw new MalformedSyntaxException(e);
 		}

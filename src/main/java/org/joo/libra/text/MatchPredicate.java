@@ -16,7 +16,7 @@ public class MatchPredicate extends BinaryPredicate<String, String> {
 	}
 
 	@Override
-	protected boolean doSatisifiedBy(final String one, final String other) {
+	protected boolean test(final String one, final String other) {
 		return one.matches(other);
 	}
 }

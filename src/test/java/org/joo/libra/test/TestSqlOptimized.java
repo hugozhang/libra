@@ -45,7 +45,7 @@ public class TestSqlOptimized {
 		if (predicate.hasError()) {
 			Assert.assertEquals(value + ":", expected, null);
 		} else {
-			Assert.assertEquals(value + ":", expected, predicate.satisfiedBy(context));
+			Assert.assertEquals(value + ":", expected, predicate.test(context));
 			OptimizedAntlrSqlPredicateParser parser = (OptimizedAntlrSqlPredicateParser) predicate.getParser();
 			Assert.assertTrue(condition.apply(parser.getOptimizedNode()));
 		}

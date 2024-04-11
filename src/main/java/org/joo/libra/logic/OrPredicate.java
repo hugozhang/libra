@@ -26,11 +26,11 @@ public class OrPredicate implements CompositionPredicate {
 	}
 
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) throws PredicateExecutionException {
+	public boolean test(final PredicateContext context) throws PredicateExecutionException {
 		if (predicates.length == 0)
 			return true;
 		for (Predicate predicate : predicates) {
-			if (predicate.satisfiedBy(context))
+			if (predicate.test(context))
 				return true;
 		}
 		return false;

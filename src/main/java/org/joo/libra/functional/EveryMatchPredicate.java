@@ -18,9 +18,9 @@ public class EveryMatchPredicate extends AbstractFunctionalMatchPredicate {
     }
 
     @Override
-    protected boolean satisfiesAsCollection(Collection<?> listValue, PredicateContext context) {
+    protected boolean matchAsCollection(Collection<?> listValue, PredicateContext context) {
         List<?> collected = listValue.stream().filter(value -> {
-            boolean isSatisfied = satisfiedBy(value, context);
+            boolean isSatisfied = test(value, context);
             if (isSatisfied) {
                 TempResultHolder.getTempResults().add(value);
             }
@@ -32,9 +32,9 @@ public class EveryMatchPredicate extends AbstractFunctionalMatchPredicate {
     }
 
     @Override
-    protected boolean satisfiesAsArray(Object[] listValue, PredicateContext context) {
+    protected boolean matchAsArray(Object[] listValue, PredicateContext context) {
         boolean b = Arrays.stream(listValue).filter(value -> {
-            boolean isSatisfied = satisfiedBy(value, context);
+            boolean isSatisfied = test(value, context);
             if (isSatisfied) {
                 TempResultHolder.getTempResults().add(value);
             }

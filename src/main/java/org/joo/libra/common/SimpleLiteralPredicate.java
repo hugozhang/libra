@@ -26,7 +26,7 @@ public class SimpleLiteralPredicate<T> implements CompositionPredicate, LiteralP
 	}
 
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) throws PredicateExecutionException {
+	public boolean test(final PredicateContext context) throws PredicateExecutionException {
 		return predicateValue;
 	}
 

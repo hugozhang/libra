@@ -24,7 +24,7 @@ public class IsEmptyPredicate implements CompositionPredicate {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) {
+	public boolean test(final PredicateContext context) {
 		Object rawValue = value.getValue(context);
 		if (rawValue == null)
 			return true;

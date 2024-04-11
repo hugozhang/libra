@@ -53,15 +53,15 @@ public class SqlPredicate implements CompositionPredicate, LiteralPredicate<Obje
 	public Object calculateLiteralValue(PredicateContext context) throws PredicateExecutionException {
 		if (predicate != null && predicate instanceof LiteralPredicate)
 			return ((LiteralPredicate<?>) predicate).calculateLiteralValue(context);
-		return satisfiedBy(context);
+		return test(context);
 	}
 
 	@Override
-	public boolean satisfiedBy(PredicateContext context) throws PredicateExecutionException {
+	public boolean test(PredicateContext context) throws PredicateExecutionException {
 		if (error || predicate == null)
 			return false;
 		try {
-			return predicate.satisfiedBy(context);
+			return predicate.test(context);
 		} catch (Exception ex) {
 			throw new PredicateExecutionException("Exception while executing SQL predicate", ex);
 		}

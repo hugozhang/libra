@@ -18,7 +18,7 @@ public class SimplePredicate implements CompositionPredicate {
 	}
 
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) throws PredicateExecutionException {
+	public boolean test(final PredicateContext context) throws PredicateExecutionException {
 		return value;
 	}
 

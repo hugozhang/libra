@@ -20,24 +20,24 @@ public abstract class AbstractFunctionalMatchPredicate implements Predicate {
     }
 
     @Override
-    public boolean satisfiedBy(PredicateContext context) throws PredicateExecutionException {
+    public boolean test(PredicateContext context) throws PredicateExecutionException {
         Object listValue = list.getValue(context);
         if (listValue == null)
-            return satisfiesAsArray(new Object[0], context);
+            return matchAsArray(new Object[0], context);
         if (listValue instanceof Object[])
-            return satisfiesAsArray((Object[]) listValue, context);
+            return matchAsArray((Object[]) listValue, context);
         if (listValue instanceof Collection)
-            return satisfiesAsCollection((Collection<?>) listValue, context);
+            return matchAsCollection((Collection<?>) listValue, context);
         return false;
     }
 
-    protected abstract boolean satisfiesAsCollection(Collection<?> listValue, PredicateContext context);
+    protected abstract boolean matchAsCollection(Collection<?> listValue, PredicateContext context);
 
-    protected abstract boolean satisfiesAsArray(Object[] listValue, PredicateContext context);
+    protected abstract boolean matchAsArray(Object[] listValue, PredicateContext context);
 
-    protected boolean satisfiedBy(Object value, PredicateContext context) {
+    protected boolean test(Object value, PredicateContext context) {
         context.setTempVariable(indexName, value);
-        return conditionPredicate.satisfiedBy(context);
+        return conditionPredicate.test(context);
     }
 
     @Override

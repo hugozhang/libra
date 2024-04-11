@@ -21,8 +21,8 @@ public class NotPredicate implements CompositionPredicate {
 	}
 
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) throws PredicateExecutionException {
-		return !predicate.satisfiedBy(context);
+	public boolean test(final PredicateContext context) throws PredicateExecutionException {
+		return !predicate.test(context);
 	}
 
 	public String toString() {

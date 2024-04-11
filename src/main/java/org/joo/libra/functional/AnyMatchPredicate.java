@@ -14,12 +14,12 @@ public class AnyMatchPredicate extends AbstractFunctionalMatchPredicate {
     }
 
     @Override
-    protected boolean satisfiesAsCollection(Collection<?> listValue, PredicateContext context) {
-        return listValue.stream().anyMatch(value -> satisfiedBy(value, context));
+    protected boolean matchAsCollection(Collection<?> listValue, PredicateContext context) {
+        return listValue.stream().anyMatch(value -> test(value, context));
     }
 
     @Override
-    protected boolean satisfiesAsArray(Object[] listValue, PredicateContext context) {
-        return Arrays.stream(listValue).anyMatch(value -> satisfiedBy(value, context));
+    protected boolean matchAsArray(Object[] listValue, PredicateContext context) {
+        return Arrays.stream(listValue).anyMatch(value -> test(value, context));
     }
 }

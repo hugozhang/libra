@@ -28,7 +28,7 @@ public class VariablePredicate implements CompositionPredicate, LiteralPredicate
 	}
 
 	@Override
-	public boolean satisfiedBy(PredicateContext context) {
+	public boolean test(PredicateContext context) {
 		Object rawValue = calculateLiteralValue(context);
 		if (rawValue == null)
 			return false;

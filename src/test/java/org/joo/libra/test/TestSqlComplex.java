@@ -29,7 +29,7 @@ public class TestSqlComplex {
 		if (predicate.hasError())
 			Assert.assertEquals(expected, null);
 		else
-			Assert.assertEquals(expected, predicate.satisfiedBy(null));
+			Assert.assertEquals(expected, predicate.test(null));
 	}
 
 	@Parameters

@@ -24,7 +24,7 @@ public class InPredicate extends BinaryPredicate {
     }
 
     @Override
-    protected boolean doSatisifiedBy(final Object one, final Object other) {
+    protected boolean test(final Object one, final Object other) {
         if (one instanceof String && other instanceof String)
             return other.toString().contains(one.toString());
         if (other instanceof Collection<?>)

@@ -17,7 +17,7 @@ public class LessPredicate extends BinaryPredicate<Object, Object> {
 	}
 
 	@Override
-	protected boolean doSatisifiedBy(final Object one, final Object other) {
+	protected boolean test(final Object one, final Object other) {
 		return GenericComparator.compare(one, other) < 0;
 	}
 }

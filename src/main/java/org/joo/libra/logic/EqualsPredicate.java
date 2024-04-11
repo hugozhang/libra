@@ -23,7 +23,7 @@ public class EqualsPredicate extends BinaryPredicate {
 	}
 
 	@Override
-	protected boolean doSatisifiedBy(final Object one, final Object other) {
+	protected boolean test(final Object one, final Object other) {
 		return GenericComparator.equals(one, other);
 	}
 }

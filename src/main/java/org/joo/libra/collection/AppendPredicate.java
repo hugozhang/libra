@@ -24,7 +24,7 @@ public class AppendPredicate extends BinaryPredicate {
     }
 
     @Override
-    protected boolean doSatisifiedBy(final Object one, final Object other) {
+    protected boolean test(final Object one, final Object other) {
         if (one instanceof Collection)
             return ((Collection) one).add(other);
         return false;

@@ -33,7 +33,7 @@ public class TestJavaPredicate {
 
 	@Test
 	public void test() throws PredicateExecutionException {
-		Assert.assertEquals(expected, predicate.satisfiedBy(null));
+		Assert.assertEquals(expected, predicate.test(null));
 	}
 
 	@Parameters

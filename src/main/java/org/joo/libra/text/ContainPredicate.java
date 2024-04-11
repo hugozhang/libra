@@ -23,7 +23,7 @@ public class ContainPredicate extends BinaryPredicate {
     }
 
     @Override
-    protected boolean doSatisifiedBy(final Object one, final Object other) {
+    protected boolean test(final Object one, final Object other) {
         if (one instanceof String)
             return one.toString().contains(other.toString());
         if (one instanceof Collection<?>)

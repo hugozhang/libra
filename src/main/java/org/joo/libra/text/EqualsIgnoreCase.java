@@ -16,7 +16,7 @@ public class EqualsIgnoreCase extends BinaryPredicate<String, String> {
 	}
 
 	@Override
-	protected boolean doSatisifiedBy(final String one, final String other) {
+	protected boolean test(final String one, final String other) {
 		return one.equalsIgnoreCase(other);
 	}
 }

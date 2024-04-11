@@ -29,7 +29,7 @@ public class DerivedLiteralPredicate<T> implements CompositionPredicate, Literal
 	}
 
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) throws PredicateExecutionException {
+	public boolean test(final PredicateContext context) throws PredicateExecutionException {
 		return predicateFunction.apply(literalValue.getValue(context));
 	}
 

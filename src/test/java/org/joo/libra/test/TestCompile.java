@@ -54,7 +54,7 @@ public class TestCompile {
 
 //        Object value = predicate.calculateLiteralValue(context);
 
-        boolean b = predicate.satisfiedBy(context);
+        boolean b = predicate.test(context);
         System.out.println(b);
     }
 

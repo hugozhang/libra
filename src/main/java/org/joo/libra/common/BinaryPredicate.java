@@ -29,17 +29,17 @@ public abstract class BinaryPredicate<T, H> implements CompositionPredicate {
 	}
 
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) {
+	public boolean test(final PredicateContext context) {
 		T theOne = one != null ? one.getValue(context) : null;
 		H theOther = other != null ? other.getValue(context) : null;
 //		if (theOne == null && theOther == null)
 //			return true;
 //		if (theOne == null || theOther == null)
 //			return false;
-		return doSatisifiedBy(theOne, theOther);
+		return test(theOne, theOther);
 	}
 
-	protected abstract boolean doSatisifiedBy(T one, H other);
+	protected abstract boolean test(T one, H other);
 
 	public String toString() {
 		String name = getClass().getSimpleName().replaceAll("Predicate", "").toUpperCase();

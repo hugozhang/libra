@@ -73,7 +73,7 @@ public class TestSqlPerf {
 
 		for (int i = 0; i < iterations; i++) {
 			PredicateContext context = new PredicateContext(MockDataUtils.mock(objectType));
-			boolean result = predicate.satisfiedBy(context);
+			boolean result = predicate.test(context);
 			Assert.assertEquals(expected, result);
 		}
 

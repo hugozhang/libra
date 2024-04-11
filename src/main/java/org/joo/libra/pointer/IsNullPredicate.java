@@ -20,7 +20,7 @@ public class IsNullPredicate implements CompositionPredicate {
 	}
 
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) {
+	public boolean test(final PredicateContext context) {
 		return value.getValue(context) == null;
 	}
 

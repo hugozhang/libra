@@ -27,7 +27,7 @@ public class ConditionalExpressionNode implements ExpressionNode, HasValue<Objec
 	public Object getValue(final PredicateContext context) {
 		if (mainPredicate == null)
 			mainPredicate = main.buildPredicate();
-		boolean satisfied = mainPredicate.satisfiedBy(context);
+		boolean satisfied = mainPredicate.test(context);
 		return satisfied ? left.getValue(context) : right.getValue(context);
 	}
 }

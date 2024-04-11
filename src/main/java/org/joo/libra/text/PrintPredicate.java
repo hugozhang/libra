@@ -29,7 +29,7 @@ public class PrintPredicate implements CompositionPredicate {
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	public boolean satisfiedBy(final PredicateContext context) {
+	public boolean test(final PredicateContext context) {
 		Object rawValue = value.getValue(context);
 		if (rawValue instanceof Collection) {
 			log.debug("[log] print Collection: " + Joiner.on(",").join(Lists.newArrayList(((Collection) rawValue).toArray())));

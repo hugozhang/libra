@@ -2,7 +2,6 @@ package org.joo.libra.test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.joo.libra.PredicateContext;
@@ -38,7 +37,7 @@ public class TestSqlVariable {
                 predicate.checkForErrorAndThrow();
         } else {
             try {
-                Assert.assertEquals(expected, predicate.satisfiedBy(new PredicateContext(context)));
+                Assert.assertEquals(expected, predicate.test(new PredicateContext(context)));
             } catch (PredicateExecutionException e) {
                 if (expected != null) {
                     e.printStackTrace();

@@ -28,8 +28,8 @@ public class TestSqlSimple {
     public void testSimple() throws PredicateExecutionException {
         SqlPredicate predicate = new SqlPredicate(value,null);
         predicate.checkForErrorAndThrow();
-        Assert.assertEquals(value + ":", expected, predicate.satisfiedBy(new PredicateContext(null)));
-        Assert.assertEquals(value + ":", expected, predicate.satisfiedBy(null));
+        Assert.assertEquals(value + ":", expected, predicate.test(new PredicateContext(null)));
+        Assert.assertEquals(value + ":", expected, predicate.test(null));
     }
 
     @Parameters
