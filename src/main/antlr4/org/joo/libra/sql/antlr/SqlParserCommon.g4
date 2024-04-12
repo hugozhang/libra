@@ -25,7 +25,10 @@ expression
 	expression # listMatchingExpr
 	| op = EXIST FOR indexName = TEMP_VAR IN listName = factor IF condition =
     expression # listMatchingExpr
+    | listName = factor LSQUARE start = INTEGER COLON end = INTEGER RSQUARE # sliceExpr
+	| PRINT right = expression   # printExpr
 	| filter # filterMatching
+
 ;
 
 term
@@ -45,7 +48,6 @@ term
 	| left = factor op = MATCHES right = factor # matchesExpr
 	| left = factor op = APPEND right = factor # appendExpr
 	| left = factor op = IN right = factor # inExpr
-    | PRINT right = factor   # printExpr
     | factor # factorExpr
 ;
 

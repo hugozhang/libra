@@ -224,9 +224,20 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
         return node;
     }
 
+
+    @Override
+    public ExpressionNode visitSliceExpr(SqlParser.SliceExprContext ctx) {
+        SliceExpressionNode node = new SliceExpressionNode();
+        node.setStart(Integer.parseInt(ctx.start.getText()));
+        node.setEnd(Integer.parseInt(ctx.end.getText()));
+        node.setInnerNode(visit(ctx.listName));
+        return node;
+    }
+
+    @Override
     public ExpressionNode visitPrintExpr(SqlParser.PrintExprContext ctx) {
         PrintExpressionNode node = new PrintExpressionNode();
-        node.setInnerNode(visit(ctx.right));
+        node.setExpressionNode(visit(ctx.right));
         return node;
     }
 

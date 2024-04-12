@@ -45,17 +45,17 @@ public class TestCompile {
 
 //        SqlPredicate predicate = new SqlPredicate("jobs append '123'");
 
-        SqlPredicate predicate = new SqlPredicate("print jobs");
+        SqlPredicate predicate = new SqlPredicate("print name");
 
 
         if (predicate.hasError()) {
             predicate.checkForErrorAndThrow();
         }
 
-//        Object value = predicate.calculateLiteralValue(context);
-
-        boolean b = predicate.test(context);
-        System.out.println(b);
+//        boolean b = predicate.test(context);
+        Object value = predicate.calculateLiteralValue(context);
+//        System.out.println(b);
+        System.out.println(value);
     }
 
     @Test
