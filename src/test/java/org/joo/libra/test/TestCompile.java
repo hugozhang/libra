@@ -14,6 +14,8 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TestCompile {
 
@@ -23,9 +25,17 @@ public class TestCompile {
         Date date1 = new Date(2024,4,7);
 
         Person p = MockDataUtils.mockPerson();
+        p.setData("a");
         p.setName("hello");
         p.setBirthDay(date);
         p.setBirthDay1(date1);
+
+        Map<String, Object> stringObjectHashMap = new HashMap<>();
+        stringObjectHashMap.put("a","123");
+        stringObjectHashMap.put("b","456");
+        p.setMapTest(stringObjectHashMap);
+
+
         JobWithSalary oracle = new JobWithSalary("Oracle", 1000);
         JobWithSalary java = new JobWithSalary("java", 1020);
         p.setJobWithSalaries(Arrays.asList(oracle,java));
@@ -45,7 +55,7 @@ public class TestCompile {
 
 //        SqlPredicate predicate = new SqlPredicate("jobs append '123'");
 
-        SqlPredicate predicate = new SqlPredicate("print name");
+        SqlPredicate predicate = new SqlPredicate("print mapTest[data]");
 
 
         if (predicate.hasError()) {

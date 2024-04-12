@@ -84,6 +84,13 @@ public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
         return node;
     }
 
+    public ExpressionNode visitMapExpr(SqlParser.MapExprContext ctx) {
+        MapExpressionNode node = new MapExpressionNode();
+        node.setLeft((VariableExpressionNode)visit(ctx.mapName));
+        node.setRight((VariableExpressionNode)visit(ctx.keyName));
+        return node;
+    }
+
     @Override
     public ExpressionNode visitParenExpr(final SqlParser.ParenExprContext ctx) {
         return visit(ctx.getChild(1));

@@ -27,6 +27,7 @@ expression
     expression # listMatchingExpr
     | listName = factor LSQUARE start = INTEGER COLON end = INTEGER RSQUARE # sliceExpr
 	| PRINT right = expression   # printExpr
+	| mapName = factor LSQUARE keyName = factor RSQUARE # mapExpr
 	| filter # filterMatching
 
 ;

@@ -3,6 +3,7 @@ package org.joo.libra.test.support;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import lombok.Data;
 
@@ -36,6 +37,8 @@ public class Person {
 	private boolean female;
 
 	private String data;
+
+	private Map<String,Object> mapTest;
 	
 	public List<String> getJobList() {
 	    return jobList;
