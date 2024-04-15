@@ -26,7 +26,7 @@ expression
 	| op = EXIST FOR indexName = TEMP_VAR IN listName = factor IF condition =
     expression # listMatchingExpr
 	| PRINT right = expression   # printExpr
-    | listName = factor LSQUARE start = INTEGER COLON end = INTEGER RSQUARE # sliceExpr
+	| listName = factor LSQUARE start = INTEGER COLON end = INTEGER RSQUARE # sliceExpr
 	| mapName = factor LSQUARE keyName = factor RSQUARE # mapExpr
 	| filter # filterMatching
 
@@ -38,11 +38,11 @@ term
 	| left = factor op = GREATER_THAN_EQUALS right = factor # compareExpr
 	| left = factor op = LESS_THAN right = factor # compareExpr
 	| left = factor op = LESS_THAN_EQUALS right = factor # compareExpr
-	| left = factor op = EQUALS right = factor # equalExpr
-	| left = factor op = DBL_EQUALS right = factor # equalExpr
-	| left = factor op = NOT_EQUALS right = factor # notEqualExpr
-	| left = factor op = IS_EQUALS_NOT right = factor # notEqualExpr
-	| left = factor op = IS_EQUALS right = factor # equalExpr
+	| left = factor op = EQUALS right = expression # equalExpr
+	| left = factor op = DBL_EQUALS right = expression # equalExpr
+	| left = factor op = NOT_EQUALS right = expression # notEqualExpr
+	| left = factor op = IS_EQUALS_NOT right = expression # notEqualExpr
+	| left = factor op = IS_EQUALS right = expression # equalExpr
 	| left = factor op = IS_EMPTY # emptyExpr
 	| left = factor op = IS_NOT_EMPTY # emptyExpr
 	| left = factor op = CONTAINS right = factor # containsExpr
