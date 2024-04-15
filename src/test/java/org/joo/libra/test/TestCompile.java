@@ -55,7 +55,8 @@ public class TestCompile {
 
 //        SqlPredicate predicate = new SqlPredicate("jobs append '123'");
 
-        SqlPredicate predicate = new SqlPredicate("print (mapTest[data])[1:2]");
+//        SqlPredicate predicate = new SqlPredicate("print (mapTest[data])[1:2]");
+        SqlPredicate predicate = new SqlPredicate("print [1,2,3]");
 
 
         if (predicate.hasError()) {
