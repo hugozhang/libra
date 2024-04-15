@@ -25,8 +25,8 @@ expression
 	expression # listMatchingExpr
 	| op = EXIST FOR indexName = TEMP_VAR IN listName = factor IF condition =
     expression # listMatchingExpr
-    | listName = factor LSQUARE start = INTEGER COLON end = INTEGER RSQUARE # sliceExpr
 	| PRINT right = expression   # printExpr
+    | listName = factor LSQUARE start = INTEGER COLON end = INTEGER RSQUARE # sliceExpr
 	| mapName = factor LSQUARE keyName = factor RSQUARE # mapExpr
 	| filter # filterMatching
 
