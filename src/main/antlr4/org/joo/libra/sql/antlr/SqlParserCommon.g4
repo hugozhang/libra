@@ -54,7 +54,7 @@ term
 	| left = factor op = GREATER_THAN_EQUALS right = factor # compareExpr
 	| left = factor op = LESS_THAN right = factor # compareExpr
 	| left = factor op = LESS_THAN_EQUALS right = factor # compareExpr
-	| left = factor op = EQUALS right = factor # equalExpr
+//	| left = factor op = EQUALS right = factor # equalExpr
 	| left = factor op = DBL_EQUALS right = factor # equalExpr
 	| left = factor op = NOT_EQUALS right = factor # notEqualExpr
 	| left = factor op = IS_EQUALS_NOT right = factor # notEqualExpr
