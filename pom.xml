@@ -97,15 +97,17 @@
 	</properties>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>ossrh_snapshots</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
 		<repository>
-			<id>ossrh_staging</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<id>winning-releases</id>
+			<url>http://192.168.3.103:8081/nexus/content/repositories/winning-releases/</url>
 		</repository>
+		<snapshotRepository>
+			<id>winning-snapshots</id>
+			<url>http://192.168.3.103:8081/nexus/content/repositories/winning-snapshots/</url>
+		</snapshotRepository>
 	</distributionManagement>
+
+
 	<build>
 		<plugins>
 			<plugin>
@@ -195,6 +197,7 @@
 				</executions> </plugin> -->
 		</plugins>
 	</build>
+
 	<developers>
 		<developer>
 			<id>dungba</id>

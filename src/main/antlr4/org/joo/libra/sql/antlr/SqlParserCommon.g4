@@ -21,7 +21,7 @@ options {
 
 predicate
 :
-	expression EOF # expressionExpr
+	expression
 ;
 
 
@@ -39,7 +39,7 @@ expression
 	expression # listMatchingExpr
 	| op = ALL FOR indexName = TEMP_VAR IN listName = factor IF condition =
 	expression # listMatchingExpr
-	| op = EXIST FOR indexName = TEMP_VAR IN listName = factor IF condition =
+	| op = EVERY FOR indexName = TEMP_VAR IN listName = factor IF condition =
     expression # listMatchingExpr
 	| PRINT right = expression   # printExpr
 	| listName = factor LSQUARE start = INTEGER COLON end = INTEGER RSQUARE # sliceExpr

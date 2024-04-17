@@ -31,7 +31,7 @@ public class MatchingExpressionNode implements ExpressionNode {
 			return new AllMatchPredicate(list, indexName, conditionPredicate);
 		case SqlLexer.NONE:
 			return new NoneMatchPredicate(list, indexName, conditionPredicate);
-		case SqlLexer.EXIST:
+		case SqlLexer.EVERY:
 			return new EveryMatchPredicate(list, indexName, conditionPredicate);
 		default:
 			return null;

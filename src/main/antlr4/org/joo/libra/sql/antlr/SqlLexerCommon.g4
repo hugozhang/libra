@@ -3,9 +3,9 @@ lexer grammar SqlLexerCommon;
 fragment Digit: 		'0'..'9' ;
 fragment Alpha: 		'.' | '_' | 'A'..'Z' | 'a'..'z' ;
 
-AND:					('AND' | 'and') ;
-OR:						('OR' | 'or') ;
-NOT:					('NOT' | 'not') ;
+AND:					('AND' | 'and' | '&&') ;
+OR:						('OR' | 'or' | '||') ;
+NOT:					('NOT' | 'not' | '!') ;
 
 IS_EQUALS:				('IS' | 'is') ;
 IS_EQUALS_NOT:			('IS NOT' | 'is not') ;
@@ -26,7 +26,7 @@ NULL:					('NULL' | 'null') ;
 ANY:					('ANY' | 'any') ;
 NONE:					('NONE' | 'none') ;
 ALL:					('ALL' | 'all') ;
-EXIST:					('EXIST' | 'exist') ;
+EVERY:					('EVERY' | 'every') ;
 FILTER:					('WITH' | 'with') ;
 OF:						('OF' | 'of') ;
 SATISFIES:				('SATISFIES' | 'satisfies') ;
