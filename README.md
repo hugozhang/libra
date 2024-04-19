@@ -52,29 +52,32 @@ Object rawValue = predicate.calculateLiteralValue(context);
 
 Libra supports the following syntax for SQL predicates:
 
-- Logic operators: `and`, `or` and `not`
-- Comparison operators: >, >=, <, <=, =, ==, !=, `is`, `is not`
+- Logic operators: `and`(`&&`), `or`(`||`) and `not`(`!`)
+- Comparison operators: `>`, `>=`, `<`, `<=`, `==`, `!=`, `is`, `is not`
 - Parenthesises
-- List and string operators: `contains` (for both list and string) and `matches` (only for string)
+- List and string operators: `contains` (for both list and string) and `matches` (only for string) and `append` (only for list)
 - Array indexing: `a[0]` (this cannot be used to evaluate a `Map`)
 - String literals, single quoted, e.g: `'John'`
 - Numeric literals: `1`, `1.0`
 - Boolean literals: `true`, `false`
 - Other literals: `null`, `undefined`, `empty`
 - Variables: alphanumerics, `_`, `.` (to denote nested object) and `[`, `]` (to denote array index), must starts with alphabet characters.
-- List: `{1, 2, 3}`. Empty list `{ }` is also supported. 
+- List: `[1, 2, 3]`. Empty list `[ ]` is also supported. 
 - Function: `functionName(arg1, arg2...)` It's also possible to configure custom function in `PredicateContext`. Built-in functions: `sqrt`, `avg`, `sum`, `min`, `max`, `len`.
 - Stream matching: See below
 - Subset filtering: See below
+
+- slice operators: `a[start:end]` (for array,list and string)
+- print operators: `print(<expression>)`
 
 **stream matching**
 
 Libra `2.0.0` supports stream-like matching, similar to `anyMatch`, `allMatch` and `noneMatch`. The syntax is:
 
 ```
-ANY <indexVariableName> IN <listVariableName> SATISFIES <expression>
-ALL <indexVariableName> IN <listVariableName> SATISFIES <expression>
-NONE <indexVariableName> IN <listVariableName> SATISFIES <expression>
+ANY FOR <indexVariableName> IN <listVariableName> IF <expression>
+ALL FOR <indexVariableName> IN <listVariableName> IF <expression>
+NONE FOR <indexVariableName> IN <listVariableName> IF <expression>
 ```
 
 `listVariableName` is the name of the list variable you want to perform matching on. `indexVariableName` is the name of the temporary variable used in each loop. For example: `ANY $job IN jobs satisfies $job.salary > 1000` will try to find out if there is ANY element in `jobs` which its `salary` property is greater than 1000. Starting from Libra `2.1.0` the temporary variable name must be started with `$`.
@@ -84,14 +87,14 @@ NONE <indexVariableName> IN <listVariableName> SATISFIES <expression>
 Libra `2.1.0` supports subset filtering from list:
 
 ```
-WITH <indexVariableName> IN <listVariableName> SATISFIES <expression>
+ <indexVariableName> IN <listVariableName> IF <expression>
 ```
 
-For example `WITH $job IN jobs satisfies $job.salary > 1000` will returns a list of jobs which the `salary` attribute is greater than 1000.
+For example ` FOR $job IN jobs IF $job.salary > 1000` will returns a list of jobs which the `salary` attribute is greater than 1000.
 
 You can also transform the returned list element using transformation expression:
 
-For example: `$job.salary WITH $job IN jobs satisfies $job.salary > 1000` will returns a list of *salary* that is greater than 1000 from the job list.
+For example: `$job.salary FOR $job IN jobs IF $job.salary > 1000` will returns a list of *salary* that is greater than 1000 from the job list.
 
 **examples**
 
@@ -140,7 +143,9 @@ The `SqlPredicate` class allows you to use your own `SqlPredicateParser`:
 SqlPredicate predicate = new SqlPredicate(predicateString, new MyPredicateParser());
 ```
 
-you can implement `SqlPredicateParser`, or extend the `AbstractAntlrSqlPredicateParser` to use your own grammar. For the former, the interface has only one method `public Predicate parse(String predicate) throws MalformedSyntaxException`, so you can even use lambda expression to construct it, like:
+you can implement `SqlPredicateParser`, or extend the `AbstractAntlrSqlPredicateParser` to use your own grammar. 
+For the former, the interface has only one method `public Predicate parse(String predicate) throws MalformedSyntaxException`, 
+so you can even use lambda expression to construct it, like:
 
 ```java
 SqlPredicate predicate = new SqlPredicate(predicateString, predicate -> {

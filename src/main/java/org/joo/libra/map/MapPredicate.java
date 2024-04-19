@@ -10,8 +10,8 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * A predicate to check if one object is contained by another collection. It
- * will use Java built-in <code>append</code> method of
+ * A predicate to check if one map object has a key. It
+ * will use Java built-in <code>map</code> method of
  * {@link Collection}
  * 
  * @author griever

@@ -1,0 +1,27 @@
+import org.antlr.v4.runtime.*;
+
+public class CustomErrorListener extends BaseErrorListener {
+    @Override
+    public void syntaxError(Recognizer<?, ?> recognizer,
+                            Object offendingSymbol,
+                            int line, int charPositionInLine,
+                            String msg, RecognitionException e) {
+
+        CharStream input = ((Lexer)recognizer).getInputStream();
+
+        if (offendingSymbol instanceof Token) {
+            Token offendingToken = (Token) offendingSymbol;
+            int start = offendingToken.getStartIndex();
+            int stop = offendingToken.getStopIndex();
+
+            if (start >= 0 && stop >= 0) {
+                String offendingText = input.getText(Interval.of(start, stop));
+                System.err.println("line " + line + ":" + charPositionInLine + " " + msg + ": " + offendingText);
+            } else {
+                System.err.println("line " + line + ":" + charPositionInLine + " " + msg);
+            }
+        } else {
+            System.err.println("line " + line + ":" + charPositionInLine + " " + msg);
+        }
+    }
+}
