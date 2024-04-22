@@ -12,6 +12,20 @@ import org.joo.libra.support.exceptions.MalformedSyntaxException;
 
 public class SqlVisitor extends SqlParserBaseVisitor<ExpressionNode> {
 
+
+    @Override
+    public ExpressionNode visitServiceCallExpr(SqlParser.ServiceCallExprContext ctx) {
+        ServiceMethodExpressionNode node = new ServiceMethodExpressionNode();
+        if (ctx.inner != null)
+            node.setInner((HasList) visit(ctx.inner));
+        node.setServiceName(ctx.serviceName.getText());
+        node.setMethodName(ctx.methodName.getText());
+        return node;
+
+    }
+
+
+
     @SuppressWarnings("unchecked")
     @Override
     public ExpressionNode visitListMatchingExpr(final SqlParser.ListMatchingExprContext ctx) {

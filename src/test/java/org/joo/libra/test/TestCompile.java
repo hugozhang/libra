@@ -56,7 +56,11 @@ public class TestCompile {
 //        SqlPredicate predicate = new SqlPredicate("jobs append '123'");
 
 //        SqlPredicate predicate = new SqlPredicate("print (mapTest[data])[1:2]");
-        SqlPredicate predicate = new SqlPredicate("print (mapTest[data])[1:2]");
+//        SqlPredicate predicate = new SqlPredicate("print (mapTest[data])[1:2]");
+//        SqlPredicate predicate = new SqlPredicate("for $job in jobWithSalaries if $job.salary > 1000");
+//        SqlPredicate predicate = new SqlPredicate("sum(name,1,2,3)");
+
+        SqlPredicate predicate = new SqlPredicate("a::sum(name,2,3,4,5,6)");
 
 
         if (predicate.hasError()) {

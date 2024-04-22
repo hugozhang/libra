@@ -29,9 +29,15 @@ expression
 	| PRINT right = expression   # printExpr
 	| listName = factor LSQUARE start = INTEGER COLON end = INTEGER RSQUARE # sliceExpr
 	| mapName = factor LSQUARE keyName = factor RSQUARE # mapExpr
+//	| serviceName = VARIABLE DBL_COLON methodName = VARIABLE LPAREN (argList)? RPAREN # serviceCallExpr
+	| serviceName = VARIABLE DBL_COLON methodName = VARIABLE LPAREN inner = list RPAREN # serviceCallExpr
+	| serviceName = VARIABLE DBL_COLON methodName = VARIABLE LPAREN RPAREN # serviceCallExpr
+
 	| filter # filterMatching
 
 ;
+
+argList: factor (',' factor)*;
 
 term
 :

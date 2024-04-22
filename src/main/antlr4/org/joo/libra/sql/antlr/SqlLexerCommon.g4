@@ -49,6 +49,7 @@ MOD:					'%' ;
 POW:					'^' ;
 QUESTION:				'?' ;
 COLON:					':' ;
+DBL_COLON:				'::' ;
 LPAREN:					'(' ;
 RPAREN:					')' ;
 LBRACE:					'{' ;

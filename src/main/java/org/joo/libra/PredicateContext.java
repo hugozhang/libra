@@ -9,6 +9,7 @@ import org.joo.libra.support.exceptions.PredicateValueException;
 import org.joo.libra.support.functions.MultiArgsFunction;
 
 import lombok.Getter;
+import org.springframework.context.ApplicationContext;
 
 /**
  * Represents a predicate context. This is used to evaluate the predicate.
@@ -27,6 +28,10 @@ public class PredicateContext {
     @Getter
     private Object context;
 
+
+    @Getter
+    private ApplicationContext springContext;
+
     private final Map<String, Object> cachedValues;
 
     private Map<String, MultiArgsFunction> functionMappings;
@@ -38,6 +43,11 @@ public class PredicateContext {
     public PredicateContext(final Object context) {
         this.context = context;
         this.cachedValues = new HashMap<>();
+    }
+
+    public PredicateContext(final Object context,ApplicationContext springContext) {
+        this(context);
+        this.springContext = springContext;
     }
 
     public PredicateContext(final Object context, Map<String, MultiArgsFunction> functionMappings) {
