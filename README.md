@@ -67,7 +67,8 @@ Libra supports the following syntax for SQL predicates:
 - Stream matching: See below
 - Subset filtering: See below
 
-- slice operators: `a[start:end]` (for array,list and string)
+- slice operators: `name[start:end]` (for array,list and string)
+- map operators: `map[key]` (for map)
 - print operators: `print(<expression>)`
 
 **stream matching**
