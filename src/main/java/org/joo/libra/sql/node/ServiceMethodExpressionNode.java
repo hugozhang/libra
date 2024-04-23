@@ -65,7 +65,7 @@ public class ServiceMethodExpressionNode implements ExpressionNode, HasValue<Obj
 			if (arg != null) {
 				argClasses.add(arg.getClass());
 			} else {
-				argClasses.add(Object.class);
+				argClasses.add(String.class);
 			}
 		}
 		return argClasses.toArray(new Class<?>[0]);
