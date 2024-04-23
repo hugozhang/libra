@@ -5,7 +5,7 @@ import org.joo.libra.Predicate;
 import org.joo.libra.PredicateContext;
 import org.joo.libra.common.HasList;
 import org.joo.libra.common.HasValue;
-import org.joo.libra.pointer.VariablePredicate;
+import org.joo.libra.pointer.RpcPredicate;
 import org.springframework.context.ApplicationContext;
 
 import java.lang.reflect.InvocationTargetException;
@@ -26,7 +26,7 @@ public class ServiceMethodExpressionNode implements ExpressionNode, HasValue<Obj
 
 	@Override
 	public Predicate buildPredicate() {
-		return new VariablePredicate(this);
+		return new RpcPredicate(this);
 	}
 
 	@Override

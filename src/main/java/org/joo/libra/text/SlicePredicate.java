@@ -75,7 +75,9 @@ public class SlicePredicate implements Predicate, LiteralPredicate<Object>, HasV
 
 	@Override
 	public Object getValue(PredicateContext context) {
-		test(context);
+		if (literalValue == null) {
+			test(context);
+		}
 		return literalValue;
 	}
 }

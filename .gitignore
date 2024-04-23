@@ -6,3 +6,4 @@
 .classpath
 .settings/
 /src/main/antlr4/org/joo/libra/sql/antlr/gen/
+/gen/
