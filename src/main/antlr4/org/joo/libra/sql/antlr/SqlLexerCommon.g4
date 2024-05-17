@@ -64,3 +64,5 @@ INDEX:					'[' Digit+ ']' ;
 
 VARIABLE:				Alpha+ (Alpha | Digit | INDEX)* ;
 TEMP_VAR:				'$' Alpha+ (Alpha | Digit | INDEX)* ;
+
+WS: 					(' ' | '\t')+ -> channel(HIDDEN) ;
