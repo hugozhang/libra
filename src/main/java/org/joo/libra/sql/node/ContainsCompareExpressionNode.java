@@ -8,6 +8,6 @@ public class ContainsCompareExpressionNode extends AbstractBinaryOpExpressionNod
 
 	@Override
 	public Predicate buildPredicate() {
-		return new ContainPredicate(getLeft(), getRight());
+		return new ContainPredicate(getLeft(), getRight(), getOp());
 	}
 }

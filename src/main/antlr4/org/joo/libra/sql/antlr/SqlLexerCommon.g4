@@ -13,6 +13,8 @@ IS_EMPTY:				('IS EMPTY' | 'is empty') ;
 IS_NOT_EMPTY:			('IS NOT EMPTY' | 'is not empty') ;
 
 CONTAINS:				('CONTAINS' | 'contains') ;
+STARTS_WITH:				('startsWith') ;
+ENDS_WITH:				('endsWith') ;
 IN:						('IN' | 'in') ;
 MATCHES:				('MATCHES' | 'matches') ;
 APPEND:					('APPEND' | 'append') ;

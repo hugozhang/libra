@@ -55,7 +55,7 @@ Libra supports the following syntax for SQL predicates:
 - Logic operators: `and`(`&&`), `or`(`||`) and `not`(`!`)
 - Comparison operators: `>`, `>=`, `<`, `<=`, `==`, `!=`, `is`, `is not`
 - Parenthesises
-- List and string operators: `contains` (for both list and string) and `matches` (only for string) and `append` (only for list)
+- List and string operators: `contains` (for both list and string) and `matches` (only for string) and `append` (only for list) and `startsWith`、`endsWith` (only for string)
 - Array indexing: `a[0]` (this cannot be used to evaluate a `Map`)
 - String literals, single quoted, e.g: `'John'`
 - Numeric literals: `1`, `1.0`

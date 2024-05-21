@@ -53,6 +53,8 @@ term
 	| left = factor op = IS_EMPTY # emptyExpr
 	| left = factor op = IS_NOT_EMPTY # emptyExpr
 	| left = factor op = CONTAINS right = factor # containsExpr
+	| left = factor op = STARTS_WITH right = factor # containsExpr
+	| left = factor op = ENDS_WITH right = factor # containsExpr
 	| left = factor op = MATCHES right = factor # matchesExpr
 	| left = factor op = APPEND right = factor # appendExpr
 	| left = factor op = IN right = factor # inExpr
